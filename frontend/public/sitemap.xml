@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://www.destinatoursandtravels.com/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://customer-assets-m6fa6gv7.emergentagent.net/job_4d361d6d-d29f-4410-be14-fdb7b63b77db/artifacts/msk34vr8_WhatsApp%20Image%202026-07-06%20at%202.19.05%20PM.jpeg</image:loc>
+      <image:title>Land's End Resort Infinity Pool, Wayanad</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.destinatoursandtravels.com/wayanad-resorts/lands-end-resort</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://customer-assets-m6fa6gv7.emergentagent.net/job_4d361d6d-d29f-4410-be14-fdb7b63b77db/artifacts/rc0gh76i_WhatsApp%20Image%202026-07-06%20at%202.19.11%20PM.jpeg</image:loc>
+      <image:title>Land's End Resort Valley View, Wayanad</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.destinatoursandtravels.com/about-us</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.destinatoursandtravels.com/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.destinatoursandtravels.com/privacy-policy</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.destinatoursandtravels.com/terms</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.destinatoursandtravels.com/booking-policy</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+</urlset>

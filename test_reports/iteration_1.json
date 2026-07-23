@@ -1,0 +1,53 @@
+{
+  "summary": "Frontend-only smoke test of Destina Tours & Travels resort booking site. Tested home, resort details, about, contact, policy pages, enquiry form validation + submission (window.open patched), mobile sticky CTA, drawer, image loads, and console errors. 34/41 assertions passed. Core UX (routing, form validation, WhatsApp/tel intents, mobile CTA, image assets) works. Two real gaps found: missing room-enquire-* data-testids and wa.me URL degrades to wa.me/91 because the placeholder phone contains X's (digitsOnly strips them). Most other 'failures' are false negatives caused by strict substring checks over text that spans newlines (verified visually via screenshot).",
+  "tested_scope": ["frontend", "integration"],
+  "passed": [
+    "Home route / renders and shows hero copy 'Escape to the hills of Wayanad.'",
+    "Header brand 'Destina Tours & Travels' and nav links Home/Land's End/About/Contact present",
+    "Header WhatsApp CTA click triggers window.open with wa.me URL + URL-encoded prefilled message referencing Destina Tours and Travels & Land's End",
+    "Hero WhatsApp button (data-testid=whatsapp-enquiry-button) triggers window.open with wa.me URL",
+    "call-now-button href = tel:+91XXXXXXXXXX",
+    "featured-whatsapp and footer-whatsapp buttons exist",
+    "Resort route /wayanad-resorts/lands-end-resort loads, document.title = 'Land's End Resort Wayanad Booking | Destina Tours and Travels'",
+    "All four room names render (Bungalow, Valley View, Arayum Purayum, Forest View)",
+    "Meal plans CP, MAP, AP shown on resort page",
+    "Enquiry form empty submit shows all 4 inline errors (name, phone, check-in, check-out)",
+    "Valid form submit calls window.open with wa.me URL containing URL-encoded Name/Phone/Check-in/Check-out/Room Type/Meal Plan lines",
+    "Check-out <= check-in shows 'Check-out must be after check-in' error",
+    "About page /about-us loads with 'How it works' section",
+    "Contact page /contact shows WhatsApp/Email content",
+    "Policy pages /privacy-policy, /terms, /booking-policy render",
+    "Mobile 390x844: mobile-cta-whatsapp and mobile-cta-call visible; mobile-cta-call href=tel:+91XXXXXXXXXX",
+    "Hamburger toggle opens drawer with drawer-whatsapp-cta and drawer-call-cta",
+    "No 404s on the 5 customer-assets images (msk34vr8, vtpolilk, cvqtgnon, rc0gh76i, qu9nijqg)",
+    "No React runtime console errors during navigation"
+  ],
+  "failed": [
+    {
+      "area": "WhatsApp URL / config",
+      "issue": "wa.me links resolve to 'https://wa.me/91?text=...' because BUSINESS.whatsapp='+91XXXXXXXXXX' and digitsOnly() strips X's, leaving only '91'. wa.me/91 is not a routable number — WhatsApp will show an invalid-number screen. tel: links are unaffected (they include the raw string). Once a real 10-digit number replaces the placeholder, this resolves automatically.",
+      "evidence": "Captured window.open URL: https://wa.me/91?text=Hi%20Destina%20Tours%20and%20Travels%2C%20I%20would%20like%20to%20enquire...",
+      "priority": "MEDIUM"
+    },
+    {
+      "area": "Resort room cards",
+      "issue": "No elements match [data-testid^='room-enquire-'] on the resort page. The problem statement specifies room-enquire-* test-ids per room card; they appear to be missing (or renamed).",
+      "evidence": "await page.locator('[data-testid^=\"room-enquire-\"]').count() === 0 on /wayanad-resorts/lands-end-resort",
+      "priority": "LOW"
+    },
+    {
+      "area": "Desktop nav",
+      "issue": "The 'Accommodation' nav link is present in the mobile drawer but was not detected in the desktop header rendered text at 1365x768. Needs quick visual confirmation whether desktop nav intentionally omits it or shows a different label.",
+      "evidence": "Desktop body inner_text did not contain 'Accommodation' at viewport 1365x768, though drawer at 390x844 shows it (screenshot).",
+      "priority": "LOW"
+    }
+  ],
+  "action_items": [
+    "Replace BUSINESS.whatsapp placeholder '+91XXXXXXXXXX' with a real number before launch — current wa.me/91 links won't route on WhatsApp. tel: is already fine because it uses the raw string.",
+    "Add data-testid='room-enquire-<id>' to each room card CTA on the resort page (Bungalow, Valley View, Arayum Purayum, Forest View) to match the spec.",
+    "Verify 'Accommodation' nav link on the desktop header — if it exists, make sure it renders at md+ breakpoints; if not, update the spec/expected labels."
+  ],
+  "success_rate": {"backend": "n/a (skipped per request)", "frontend": "83% (34/41 assertions; ~90% after excluding false-negative substring checks)"},
+  "retest_needed": true,
+  "full_testing_deferred": true
+}

@@ -1,56 +1,57 @@
 import { useEffect } from "react";
-import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
-import { HOME } from "@/constants/testIds";
+import "./App.css";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import Header from "./components/site/Header";
+import Footer from "./components/site/Footer";
+import MobileBottomCTA from "./components/site/MobileBottomCTA";
+import Home from "./pages/Home";
+import Resort from "./pages/Resort";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import { PrivacyPolicy, Terms, BookingPolicy } from "./pages/Policies";
+import { useLenis } from "./hooks/useLenis";
+import { useJsonLd } from "./hooks/useJsonLd";
+import { travelAgencyLd, websiteLd } from "./lib/schema";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
-
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
-
+function ScrollToTop() {
+  const { pathname, hash } = useLocation();
   useEffect(() => {
-    helloWorldApi();
-  }, []);
+    if (hash) return;
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" in window ? "instant" : "auto" });
+  }, [pathname, hash]);
+  return null;
+}
 
+function Shell() {
+  useLenis();
+  useJsonLd("organization", travelAgencyLd);
+  useJsonLd("website", websiteLd);
   return (
-    <div>
-      <header className="App-header">
-        <a
-          data-testid={HOME.emergentLink}
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
+    <>
+      <ScrollToTop />
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/wayanad-resorts/lands-end-resort" element={<Resort />} />
+        <Route path="/about-us" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/booking-policy" element={<BookingPolicy />} />
+        <Route path="*" element={<Home />} />
+      </Routes>
+      <Footer />
+      <MobileBottomCTA />
+    </>
   );
-};
+}
 
-function App() {
+export default function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
+        <Shell />
       </BrowserRouter>
     </div>
   );
 }
-
-export default App;

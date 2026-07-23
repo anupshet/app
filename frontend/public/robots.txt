@@ -1,0 +1,9 @@
+# robots.txt for Destina Tours and Travels
+User-agent: *
+Allow: /
+
+# Disallow noisy internal query strings if any are added later
+Disallow: /*?utm_*
+Disallow: /*?gclid=*
+
+Sitemap: https://www.destinatoursandtravels.com/sitemap.xml
