@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://www.destinatoursandtravels.com/</loc>
+    <loc>https://destinatoursandtravels.in/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -11,7 +11,7 @@
     </image:image>
   </url>
   <url>
-    <loc>https://www.destinatoursandtravels.com/wayanad-resorts/lands-end-resort</loc>
+    <loc>https://destinatoursandtravels.in/wayanad-resorts/lands-end-resort</loc>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
     <image:image>
@@ -20,27 +20,27 @@
     </image:image>
   </url>
   <url>
-    <loc>https://www.destinatoursandtravels.com/about-us</loc>
+    <loc>https://destinatoursandtravels.in/about-us</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.destinatoursandtravels.com/contact</loc>
+    <loc>https://destinatoursandtravels.in/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.destinatoursandtravels.com/privacy-policy</loc>
+    <loc>https://destinatoursandtravels.in/privacy-policy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://www.destinatoursandtravels.com/terms</loc>
+    <loc>https://destinatoursandtravels.in/terms</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://www.destinatoursandtravels.com/booking-policy</loc>
+    <loc>https://destinatoursandtravels.in/booking-policy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

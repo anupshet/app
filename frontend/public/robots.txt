@@ -6,4 +6,4 @@ Allow: /
 Disallow: /*?utm_*
 Disallow: /*?gclid=*
 
-Sitemap: https://www.destinatoursandtravels.com/sitemap.xml
+Sitemap: https://destinatoursandtravels.in/sitemap.xml

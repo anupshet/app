@@ -1,8 +1,8 @@
 // Central business + resort configuration. Update contact values here only.
 
 export const SITE = {
-  // Replace with your production domain when live (used by sitemap + JSON-LD).
-  url: "https://www.destinatoursandtravels.com",
+  // Production domain — used by sitemap.xml, robots.txt and JSON-LD.
+  url: "https://destinatoursandtravels.in",
 };
 
 export const BUSINESS = {
