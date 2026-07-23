@@ -1,0 +1,129 @@
+{
+  "theme_and_context": {
+    "concept": "The Sanctuary. A premium, high-converting luxury resort marketing and booking experience.",
+    "archetype": "Organic & Earthy (ARCHETYPE 1) mixed with Luxury (ARCHETYPE 5).",
+    "vibe": "Premium, trustworthy, calm, heavily rooted in nature and high-end editorial storytelling. Not a standard booking engine—a digital retreat.",
+    "decision_rationale": "Breaks the generic OTA (Online Travel Agency) booking pattern to feel unique for high-net-worth travelers. Uses cinematic immersion over dense forms."
+  },
+  "typography": {
+    "strategy": "The 'Old Money Tech' strategy. Classic elegant Serif head paired with ultra-clean Mono/Geometric body.",
+    "headings": {
+      "font": "Cormorant Garamond",
+      "style": "font-serif, tracking-tight, leading-none, font-light or font-medium. Massive scales (text-5xl to text-7xl for hero).",
+      "notes": "Never use Inter or Roboto for headings. Use fluid typography scaling."
+    },
+    "body": {
+      "font": "Manrope",
+      "style": "font-sans, leading-relaxed, text-base, tracking-normal. Highly legible."
+    },
+    "accents": {
+      "style": "Uppercase, tracking-[0.2em], text-xs to text-sm. Used for Overlines and Chapter numbers (e.g., '01 / THE SANCTUARY')."
+    }
+  },
+  "colors": {
+    "base": {
+      "light": "#F7F5F0",
+      "dark": "#0A170F",
+      "description": "Cream/Off-White for light sections, Deep Forest Void for dark sections."
+    },
+    "accents": {
+      "primary": "#8B5A2B",
+      "secondary": "#2C402B",
+      "tertiary": "#D4CBBF",
+      "description": "Warm Wood/Terracotta (primary CTAs), Muted Moss (secondary blocks), Sand (borders/dividers)."
+    },
+    "rules": {
+      "contrast": "Ensure text meets APCA standards. DO NOT use complete transparent backgrounds for headers/dropdowns. Hover states must be a lighter/darker hue of the active state. Do not use generic full-screen gradients."
+    }
+  },
+  "visual_enhancers": {
+    "surfaces": "Glassmorphism ('Crystal' variant) for the sticky mobile CTA bar and fixed navigation (e.g., bg-white/70 backdrop-blur-xl border-t border-white/20). Flat solid surfaces for content cards to retain a warm, physical feel.",
+    "textures": "Subtle SVG noise or grain overlay (opacity-20 blend-overlay) across dark sections to make the forest green feel like velvet, not digital plastic.",
+    "shapes": "Clipped frames with sharp corners or very slight radii (rounded-sm) to match the premium architectural vibe. Avoid bubbly/heavy rounded corners."
+  },
+  "grids": {
+    "strategy": "The 'Tetris' Grid (Mode A) for the visual experience gallery.",
+    "implementation": "Base Grid: grid-cols-1 md:grid-cols-12 gap-8. Mix spans (col-span-8, col-span-4) to create intentional asymmetry. Leave negative space. Never fill 100% of the grid perfectly."
+  },
+  "layouts": {
+    "spacing": "Generous Spacing Philosophy. Use py-24, py-32 for section pacing. Inside containers use p-8 or p-12.",
+    "alignment": "Left-align paragraphs and dense content. Headings can be optically centered only in the Hero or distinct manifesto moments.",
+    "sections": [
+      "Hero: Full viewport height (100vh), Kinetic text reveal, Infinity pool background.",
+      "Trust & Intro: The 'Manifesto' style, large serif text, slow editorial marquee.",
+      "Experience/Gallery: Asymmetrical grid with clipped image reveals.",
+      "Accommodation: High-contrast cards showcasing Bungalow/Valley View, etc.",
+      "Meal Plans & Enquiry: Clean Shadcn forms stripped of the 'Vercel' look, styled with earthy colors.",
+      "Sticky Bottom CTA: Mobile-only, fixed bottom, glassmorphic bar with WhatsApp and Call buttons."
+    ]
+  },
+  "motion": {
+    "scroll": "MUST use @studio-freight/lenis for smooth momentum scrolling. This is critical for the premium feel.",
+    "hero_reveal": "Framer Motion line-by-line masked text reveal on load. Wrap each line of text in an 'overflow-hidden' container and animate the child 'y' from 100% to 0%.",
+    "parallax": "Subtle parallax on the Hero image and large gallery images (y-axis translation on scroll) using Framer Motion's useScroll.",
+    "micro_interactions": "Image wrappers scale up slightly on hover (scale-105 duration-700 ease-out) while the wrapper stays overflow-hidden. Buttons use a fill-slide or text-shift hover effect."
+  },
+  "accessibility": {
+    "contrast": "Always verify APCA contrast. Include text-shadow over images.",
+    "motion": "Respect prefers-reduced-motion media queries.",
+    "testing": "All interactive and key informational elements MUST include a data-testid attribute (e.g., data-testid='whatsapp-enquiry-button')."
+  },
+  "media": {
+    "image_handling": "CRITICAL: The provided real photography has baked-in logos and Instagram tags. To handle this gracefully: Wrap images in an overflow-hidden div, apply object-cover and scale-[1.10] to crop the edges out. Apply a gradient scrim (bg-gradient-to-t from-black/60 via-transparent) to the bottom of the images to mask watermarks and ensure text readability.",
+    "hero_overlay": "Max overlay opacity bg-black/40. If the image isn't visible, you're wasting it. Use gradient overlays for text contrast instead of flat blanket overlays."
+  },
+  "image_urls": [
+    {
+      "category": "Hero Background",
+      "url": "https://customer-assets-m6fa6gv7.emergentagent.net/job_4d361d6d-d29f-4410-be14-fdb7b63b77db/artifacts/msk34vr8_WhatsApp%20Image%202026-07-06%20at%202.19.05%20PM.jpeg",
+      "description": "Infinity Pool - mountain view. Best for the main landing 100vh hero section."
+    },
+    {
+      "category": "Accommodation / General Details",
+      "url": "https://customer-assets-m6fa6gv7.emergentagent.net/job_4d361d6d-d29f-4410-be14-fdb7b63b77db/artifacts/vtpolilk_WhatsApp%20Image%202026-07-06%20at%202.19.09%20PM.jpeg",
+      "description": "Bedroom 'Majestic Retreat' - warm wooden bedroom interior with candlelight."
+    },
+    {
+      "category": "Meal Plans / Dining",
+      "url": "https://customer-assets-m6fa6gv7.emergentagent.net/job_4d361d6d-d29f-4410-be14-fdb7b63b77db/artifacts/cvqtgnon_WhatsApp%20Image%202026-07-06%20at%202.19.10%20PM%20%281%29.jpeg",
+      "description": "Café Bamboo - open-air café with bamboo."
+    },
+    {
+      "category": "Experience / About",
+      "url": "https://customer-assets-m6fa6gv7.emergentagent.net/job_4d361d6d-d29f-4410-be14-fdb7b63b77db/artifacts/rc0gh76i_WhatsApp%20Image%202026-07-06%20at%202.19.11%20PM.jpeg",
+      "description": "Valley View - woman looking at misty valley with river."
+    },
+    {
+      "category": "Accommodation / Gallery",
+      "url": "https://customer-assets-m6fa6gv7.emergentagent.net/job_4d361d6d-d29f-4410-be14-fdb7b63b77db/artifacts/qu9nijqg_WhatsApp%20Image%202026-07-06%20at%202.19.13%20PM.jpeg",
+      "description": "Bungalow at dusk - Kerala-style bungalow with warm lights."
+    }
+  ],
+  "3d_libraries": {
+    "recommendation": "Not strictly necessary for the core layout given the strong photography, but Framer Motion (2.5D parallax) and Lenis (momentum scroll) will create the Awwwards-level kinetic depth required.",
+    "packages_to_install": ["framer-motion", "@studio-freight/lenis", "react-fast-marquee", "lucide-react"]
+  },
+  "component_path": "/app/frontend/src/components/ui",
+  "instructions_to_main_agent": [
+    "Install the required libraries: framer-motion, @studio-freight/lenis, react-fast-marquee.",
+    "Use standard HTML/Tailwind for marketing sections. Only use Shadcn UI components for complex interactions like the Form, Accordion (FAQs), or Dialogs.",
+    "Use the provided image URLs exclusively. DO NOT use generic placeholders.",
+    "Apply 'scale-[1.10]' inside an 'overflow-hidden' container for all images to crop out the embedded logos/tags.",
+    "Ensure the hero text reveal uses Framer Motion. The text should be masked (overflow-hidden) and slide up line-by-line.",
+    "Implement a sticky mobile CTA at the bottom using backdrop-blur-xl and solid contrasting buttons for WhatsApp and Phone.",
+    "Build a slow editorial marquee that says something like 'THE SANCTUARY OF WAYANAD — DESTINA TOURS — UNPLUG AND RECONNECT' in a serif font, separated by elegant bullet points."
+  ],
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": [
+    "You tend to converge toward generic, 'on distribution' outputs. In frontend design, this creates what users call the 'AI slop' aesthetic. Avoid this: make creative, distinctive frontends that surprise and delight.",
+    "Dark colors look good when used independently without gradients. DO NOT use dark colors as gradients.",
+    "Don't make generic centered layouts, simplistic gradients, and uniform styling.",
+    "Create depth through layered design elements with z-index hierarchy.",
+    "Use glass-morphism effects with backdrop filters (12-24px blur) where appropriate (e.g., navbars, sticky elements).",
+    "You MUST NOT apply universal transition (e.g., transition: all). This breaks transforms. Add transitions to specific properties only.",
+    "You MUST NOT center align the app container, i.e., do not add .App { text-align: center; } in the CSS file.",
+    "NEVER use AI assistant Emoji characters like 🤖🧠💭💡🔮🎯 etc for icons.",
+    "Every interaction needs micro-animations - hover states, transitions, parallax effects, and entrance animations. Static = dead.",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
+    "Include data-testid attributes on all interactive and key informational elements."
+  ]
+}
