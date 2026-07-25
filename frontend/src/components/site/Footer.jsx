@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Instagram, Mail, MessageCircle, Phone } from "lucide-react";
+import { Mail, MessageCircle, Phone } from "lucide-react";
 import { BUSINESS, RESORT } from "../../lib/config";
 import { openWhatsApp, generalEnquiryMessage, telLink } from "../../lib/whatsapp";
 
@@ -60,7 +60,6 @@ export default function Footer() {
             <ul className="mt-6 space-y-3 text-sm">
               <li className="flex items-center gap-2"><Phone className="h-3.5 w-3.5" />{BUSINESS.phone}</li>
               <li className="flex items-center gap-2"><Mail className="h-3.5 w-3.5" />{BUSINESS.email}</li>
-              <li className="flex items-center gap-2"><Instagram className="h-3.5 w-3.5" />@lands_end_wayanad</li>
             </ul>
           </div>
         </div>
