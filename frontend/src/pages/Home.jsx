@@ -22,7 +22,7 @@ function HeroSection() {
   return (
     <section ref={ref} className="relative isolate h-[100svh] min-h-[640px] w-full overflow-hidden bg-[#0A170F]" data-testid="hero-section">
       <motion.div style={{ y: bgY, scale: bgScale }} className="absolute inset-0">
-        <img src={IMAGES.hero} alt="Infinity pool overlooking the Wayanad mountains" className="h-full w-full object-cover" />
+        <img src={IMAGES.valley} alt="Misty Wayanad valley view from Land's End Resort" className="h-full w-full object-cover" />
       </motion.div>
       <div className="absolute inset-0 bg-gradient-to-b from-[#0A170F]/60 via-[#0A170F]/25 to-[#0A170F]/85" />
       <div className="pointer-events-none absolute inset-0 opacity-[0.14] mix-blend-overlay [background-image:radial-gradient(circle_at_1px_1px,#F7F5F0_1px,transparent_0)] [background-size:22px_22px]" />

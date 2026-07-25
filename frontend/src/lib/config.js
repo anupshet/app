@@ -32,11 +32,11 @@ export const RESORT = {
 
 // Uploaded real photography of Land's End Resort & Spa
 export const IMAGES = {
-  hero: "https://customer-assets-m6fa6gv7.emergentagent.net/job_4d361d6d-d29f-4410-be14-fdb7b63b77db/artifacts/msk34vr8_WhatsApp%20Image%202026-07-06%20at%202.19.05%20PM.jpeg",
-  bedroom: "https://customer-assets-m6fa6gv7.emergentagent.net/job_4d361d6d-d29f-4410-be14-fdb7b63b77db/artifacts/vtpolilk_WhatsApp%20Image%202026-07-06%20at%202.19.09%20PM.jpeg",
-  cafe: "https://customer-assets-m6fa6gv7.emergentagent.net/job_4d361d6d-d29f-4410-be14-fdb7b63b77db/artifacts/cvqtgnon_WhatsApp%20Image%202026-07-06%20at%202.19.10%20PM%20%281%29.jpeg",
+  hero: "https://customer-assets-m6fa6gv7.emergentagent.net/job_4d361d6d-d29f-4410-be14-fdb7b63b77db/artifacts/vtpolilk_WhatsApp%20Image%202026-07-06%20at%202.19.09%20PM.jpeg",
+  bedroom: "https://customer-assets-m6fa6gv7.emergentagent.net/job_4d361d6d-d29f-4410-be14-fdb7b63b77db/artifacts/msk34vr8_WhatsApp%20Image%202026-07-06%20at%202.19.05%20PM.jpeg",
+  cafe: "https://customer-assets-m6fa6gv7.emergentagent.net/job_4d361d6d-d29f-4410-be14-fdb7b63b77db/artifacts/qu9nijqg_WhatsApp%20Image%202026-07-06%20at%202.19.13%20PM.jpeg",
   valley: "https://customer-assets-m6fa6gv7.emergentagent.net/job_4d361d6d-d29f-4410-be14-fdb7b63b77db/artifacts/rc0gh76i_WhatsApp%20Image%202026-07-06%20at%202.19.11%20PM.jpeg",
-  bungalow: "https://customer-assets-m6fa6gv7.emergentagent.net/job_4d361d6d-d29f-4410-be14-fdb7b63b77db/artifacts/qu9nijqg_WhatsApp%20Image%202026-07-06%20at%202.19.13%20PM.jpeg",
+  bungalow: "https://customer-assets-m6fa6gv7.emergentagent.net/job_4d361d6d-d29f-4410-be14-fdb7b63b77db/artifacts/cvqtgnon_WhatsApp%20Image%202026-07-06%20at%202.19.10%20PM%20%281%29.jpeg",
 };
 
 export const GALLERY = [
