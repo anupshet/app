@@ -9,9 +9,9 @@ export const BUSINESS = {
   name: "Destina Tours and Travels",
   legalName: "Destina Tours and Travels",
   tagline: "Booking assistance for premium stays in Wayanad",
-  whatsapp: "+91XXXXXXXXXX",
-  phone: "+91XXXXXXXXXX",
-  email: "your-email@yourdomain.com",
+  whatsapp: "+917019540319",
+  phone: "+917019540319",
+  email: "travel@destinatoursandtravels.in",
   addressShort: "Wayanad, Kerala, India",
 };
 
