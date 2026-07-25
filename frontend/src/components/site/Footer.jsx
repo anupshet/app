@@ -59,7 +59,6 @@ export default function Footer() {
             <p className="text-[10px] uppercase tracking-[0.32em] text-[#F7F5F0]/50">Reach</p>
             <ul className="mt-6 space-y-3 text-sm">
               <li className="flex items-center gap-2"><Phone className="h-3.5 w-3.5" />{BUSINESS.phone}</li>
-              <li className="flex items-center gap-2"><MessageCircle className="h-3.5 w-3.5" />{BUSINESS.whatsapp}</li>
               <li className="flex items-center gap-2"><Mail className="h-3.5 w-3.5" />{BUSINESS.email}</li>
               <li className="flex items-center gap-2"><Instagram className="h-3.5 w-3.5" />@lands_end_wayanad</li>
             </ul>
