@@ -1,16 +1,34 @@
+import { useEffect, useState } from "react";
 import { MessageCircle, Phone } from "lucide-react";
 import { openWhatsApp, generalEnquiryMessage, telLink } from "../../lib/whatsapp";
 import { BUSINESS } from "../../lib/config";
 
 /**
  * Desktop-only sticky enquiry card, fixed bottom-right.
- * Mobile uses MobileBottomCTA instead.
+ * Auto-hides when the footer enters view so it never covers the
+ * legal disclaimer (Google Ads compliance). Mobile uses MobileBottomCTA.
  */
 export default function DesktopStickyCTA() {
+  const [hidden, setHidden] = useState(false);
+
+  useEffect(() => {
+    const footer = document.querySelector('[data-testid="site-footer"]');
+    if (!footer || !("IntersectionObserver" in window)) return undefined;
+    const io = new IntersectionObserver(
+      ([entry]) => setHidden(entry.isIntersecting),
+      { rootMargin: "0px 0px -10% 0px", threshold: 0 }
+    );
+    io.observe(footer);
+    return () => io.disconnect();
+  }, []);
+
   return (
     <div
       data-testid="desktop-sticky-cta"
-      className="fixed bottom-6 right-6 z-40 hidden w-[300px] lg:block"
+      aria-hidden={hidden}
+      className={`fixed bottom-6 right-6 z-40 hidden w-[300px] transition-all duration-500 lg:block ${
+        hidden ? "pointer-events-none translate-y-6 opacity-0" : "translate-y-0 opacity-100"
+      }`}
     >
       <div className="overflow-hidden rounded-2xl border border-[#0A170F]/10 bg-white/90 shadow-[0_18px_50px_rgba(10,23,15,0.18)] backdrop-blur-xl">
         <div className="bg-[#2C402B] px-5 py-3">

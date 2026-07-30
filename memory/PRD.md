@@ -42,3 +42,17 @@ Build a premium, high-converting, mobile-first frontend-only resort booking webs
 
 ## Architecture Notes
 Frontend-only React SPA (react-router-dom v7). All resort data is centralised in `lib/config.js` so adding a new resort/destination is a matter of extending `ROOMS`, `IMAGES`, `GALLERY`, and adding a route + page. WhatsApp/Call logic is fully reused via `lib/whatsapp.js`.
+
+## Enhancement Pass — Trust, Compliance & SEO (2026-12)
+- **Business location** corrected to Bangalore, Karnataka (business) while resort stays Wayanad. Added business hours (Mon–Sun 9AM–9PM).
+- **Prominent disclaimer** ("independent...not the official website of Land's End Resort & Spa") now shown as a green strip on Home, Resort, About, Contact + in footer legal row. Centralised as `DISCLAIMER` in config.js.
+- **Real contacts live everywhere**: WhatsApp/phone +917019540319, email travel@destinatoursandtravels.in.
+- **Homepage**: new "Why book through Destina Tours and Travels?" trust section (4 icon cards) + SEO title/description.
+- **About page** rebuilt: Who We Are, What We Do (6), How Our Process Works (4 steps), Why Choose Us, CTAs.
+- **Contact page**: Bangalore location + business hours + business info + disclaimer.
+- **Footer**: full Quick Links (Home, Land's End, About, Contact, Privacy, Terms, Booking), "Independent Travel & Resort Booking Assistance Service", address, hours, disclaimer.
+- **Booking policy** restructured: Booking Process / Pricing / Cancellation / Refunds.
+- **FAQs** updated to the 5 compliance-focused Q&As (official-website disclaimer, availability, pricing not final, booking, pre-booking contact).
+- **Conversion**: desktop sticky enquiry card (auto-hides at footer so disclaimer is never covered) + existing mobile bottom bar.
+- **SEO**: per-page titles via useSEO hook; Google Search Console verification meta added; JSON-LD org address = Bangalore + openingHours; sitemap/robots on destinatoursandtravels.in.
+- **Testing**: iteration_2 = 100% (73/73) frontend assertions passed.
