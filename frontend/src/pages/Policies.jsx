@@ -1,6 +1,8 @@
 import { RevealText } from "../components/site/RevealText";
+import { useSEO } from "../hooks/useSEO";
 
-export function PolicyLayout({ chapter, title, children }) {
+export function PolicyLayout({ chapter, title, seoTitle, seoDescription, children }) {
+  useSEO(seoTitle || `${title} | Destina Tours and Travels`, seoDescription);
   return (
     <main className="bg-[#F7F5F0] pb-32 pt-40 md:pt-48" data-testid={`policy-${chapter.toLowerCase()}`}>
       <div className="mx-auto max-w-[900px] px-6 lg:px-10">
@@ -50,17 +52,29 @@ export function Terms() {
 export function BookingPolicy() {
   return (
     <PolicyLayout chapter="Booking" title="Booking & Cancellation">
-      <p>The following outlines our booking &amp; cancellation approach. Specific terms may be adjusted per resort policy at the time of booking.</p>
-      <h2>Reservations</h2>
-      <p>Reservations are confirmed only after receipt of the applicable advance/full payment as agreed. Rates quoted are valid for the specific dates and inclusions confirmed in writing.</p>
-      <h2>Cancellations</h2>
-      <p>Cancellation charges depend on the timing of your cancellation relative to the check-in date and the specific resort policy applicable to your booking. We will share the exact cancellation terms at the time of confirming your booking.</p>
-      <h2>No-show</h2>
-      <p>Failure to check in without prior cancellation is treated as a no-show and may attract 100% cancellation charges as per the resort policy.</p>
+      <p>The following outlines our booking &amp; cancellation approach. Specific terms may be adjusted per the selected property's policy at the time of booking. Prices and availability are subject to confirmation.</p>
+
+      <h2>Booking Process</h2>
+      <p>• All bookings are subject to availability.<br />
+        • Availability must be confirmed before payment.<br />
+        • Booking confirmation will be communicated after verification.</p>
+
+      <h2>Pricing</h2>
+      <p>• Prices are subject to availability.<br />
+        • Prices may vary based on travel dates.<br />
+        • Taxes may apply separately.<br />
+        • Final pricing is confirmed before booking.</p>
+
+      <h2>Cancellation</h2>
+      <p>• Cancellation policies may vary depending on the selected property.<br />
+        • Applicable cancellation terms will be communicated before booking confirmation.</p>
+
       <h2>Refunds</h2>
-      <p>Refunds, where applicable, are processed within a reasonable timeframe to the original mode of payment.</p>
-      <h2>Force majeure</h2>
-      <p>In case of natural events or circumstances beyond reasonable control, we will work with the resort to reschedule your stay or refund as applicable per policy.</p>
+      <p>• Refund eligibility depends on the resort's cancellation terms.<br />
+        • Customers should verify cancellation conditions before confirming a booking.</p>
+
+      <h2>Force Majeure</h2>
+      <p>In case of natural events or circumstances beyond reasonable control, we will work with the resort to reschedule your stay or process a refund as applicable per the property's policy.</p>
     </PolicyLayout>
   );
 }

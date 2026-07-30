@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/site/Header";
 import Footer from "./components/site/Footer";
 import MobileBottomCTA from "./components/site/MobileBottomCTA";
+import DesktopStickyCTA from "./components/site/DesktopStickyCTA";
 import Home from "./pages/Home";
 import Resort from "./pages/Resort";
 import About from "./pages/About";
@@ -42,6 +43,7 @@ function Shell() {
       </Routes>
       <Footer />
       <MobileBottomCTA />
+      <DesktopStickyCTA />
     </>
   );
 }

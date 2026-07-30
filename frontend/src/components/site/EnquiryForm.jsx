@@ -61,7 +61,7 @@ export default function EnquiryForm({ compact = false, testId = "enquiry-form" }
           data-testid="form-name"
           required
         />
-        {errors.name && <p className="mt-1 text-xs text-red-700">{errors.name}</p>}
+        {errors.name && <p data-testid="form-error-name" className="mt-1 text-xs text-red-700">{errors.name}</p>}
       </div>
 
       <div>
@@ -75,7 +75,7 @@ export default function EnquiryForm({ compact = false, testId = "enquiry-form" }
           data-testid="form-phone"
           required
         />
-        {errors.phone && <p className="mt-1 text-xs text-red-700">{errors.phone}</p>}
+        {errors.phone && <p data-testid="form-error-phone" className="mt-1 text-xs text-red-700">{errors.phone}</p>}
       </div>
 
       <div>
@@ -89,13 +89,13 @@ export default function EnquiryForm({ compact = false, testId = "enquiry-form" }
       <div>
         <label className={label}>Check-in</label>
         <input value={form.checkIn} onChange={set("checkIn")} type="date" className={inputBase} data-testid="form-checkin" required />
-        {errors.checkIn && <p className="mt-1 text-xs text-red-700">{errors.checkIn}</p>}
+        {errors.checkIn && <p data-testid="form-error-checkin" className="mt-1 text-xs text-red-700">{errors.checkIn}</p>}
       </div>
 
       <div>
         <label className={label}>Check-out</label>
         <input value={form.checkOut} onChange={set("checkOut")} type="date" className={inputBase} data-testid="form-checkout" required />
-        {errors.checkOut && <p className="mt-1 text-xs text-red-700">{errors.checkOut}</p>}
+        {errors.checkOut && <p data-testid="form-error-checkout" className="mt-1 text-xs text-red-700">{errors.checkOut}</p>}
       </div>
 
       <div>

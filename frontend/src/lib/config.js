@@ -8,12 +8,22 @@ export const SITE = {
 export const BUSINESS = {
   name: "Destina Tours and Travels",
   legalName: "Destina Tours and Travels",
-  tagline: "Booking assistance for premium stays in Wayanad",
+  tagline: "Independent Travel & Resort Booking Assistance Service",
   whatsapp: "+917019540319",
   phone: "+917019540319",
   email: "travel@destinatoursandtravels.in",
-  addressShort: "Wayanad, Kerala, India",
+  addressShort: "Bangalore, Karnataka, India",
+  city: "Bangalore",
+  state: "Karnataka",
+  country: "India",
+  hours: "Monday to Sunday · 9:00 AM – 9:00 PM",
 };
+
+// Prominent, Google-Ads-compliant disclaimer shown across the site.
+export const DISCLAIMER =
+  "Destina Tours and Travels is an independent travel and booking assistance business. This is not the official website of Land's End Resort & Spa.";
+
+export const PRICING_NOTE = "Prices and availability are subject to confirmation.";
 
 // Strip non-digits for wa.me / tel: hrefs
 export const digitsOnly = (s) => String(s || "").replace(/\D/g, "");
@@ -95,25 +105,40 @@ export const TRUST_CARDS = [
   { title: "Direct Booking Assistance",   body: "Connect with Destina Tours and Travels for availability and coordination." },
 ];
 
+// "Why Book Through Destina Tours and Travels?" — homepage trust signals.
+export const WHY_DESTINA = [
+  { icon: "UserRound",      title: "Personalized Booking Assistance", body: "Real, human help tailored to your dates, group size and travel preferences." },
+  { icon: "MessageCircle",  title: "Quick WhatsApp Support",          body: "Fast, friendly responses so your enquiry never waits in a queue." },
+  { icon: "BadgeIndianRupee", title: "Transparent Pricing Information", body: "Clear pricing guidance with no hidden surprises — confirmed before you book." },
+  { icon: "Compass",        title: "Direct Travel Guidance",          body: "Room recommendations, package advice and end-to-end trip coordination." },
+];
+
+export const WHY_CHOOSE_US = [
+  "Personalized assistance",
+  "Quick WhatsApp support",
+  "Transparent communication",
+  "Hassle-free enquiry process",
+];
+
 export const FAQS = [
   {
-    q: "Is this the official Land's End Resort website?",
-    a: "No. Destina Tours and Travels is an independent booking assistance service. We help travellers enquire about availability, pricing and coordination for stays at Land's End Resort & Spa, Wayanad.",
+    q: "Is this the official website of Land's End Resort?",
+    a: "No. Destina Tours and Travels is an independent travel and booking assistance business that helps customers enquire about stays at Land's End Resort & Spa.",
   },
   {
-    q: "How do I get final pricing and availability?",
-    a: "Send us a WhatsApp enquiry with your travel dates, guests and preferred room type. We'll share the latest available pricing after confirming with the resort.",
+    q: "How do I check availability?",
+    a: "Share your travel dates and guest count through WhatsApp or phone. We will assist with availability information.",
   },
   {
-    q: "What are the check-in and check-out timings?",
-    a: `Check-in ${RESORT.checkIn} · Check-out ${RESORT.checkOut}. Early check-in / late check-out is subject to availability on the day of arrival.`,
+    q: "Are displayed prices final?",
+    a: "No. Final pricing depends on travel dates, room type, meal plan, availability, and applicable taxes. Prices and availability are subject to confirmation.",
   },
   {
-    q: "Are taxes included in the tariff?",
-    a: "Tariffs are exclusive of applicable taxes. Final invoice will reflect all applicable taxes and package inclusions.",
+    q: "How does booking work?",
+    a: "Contact us through WhatsApp or phone, share your requirements, and we will assist with the booking process.",
   },
   {
-    q: "Do you handle group and corporate bookings?",
-    a: "Yes. Reach out on WhatsApp with your group size and dates for a tailored group offer.",
+    q: "Can I contact you before making a booking?",
+    a: "Yes. We encourage customers to contact us for room recommendations, availability checks, and package information.",
   },
 ];

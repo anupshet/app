@@ -1,17 +1,71 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, MapPin } from "lucide-react";
-import { IMAGES, GALLERY, TRUST_CARDS, ROOMS, MEAL_PLANS, RESORT, FAQS } from "../lib/config";
+import { ArrowUpRight, MapPin, UserRound, MessageCircle, BadgeIndianRupee, Compass, ShieldCheck } from "lucide-react";
+import { IMAGES, GALLERY, TRUST_CARDS, WHY_DESTINA, ROOMS, MEAL_PLANS, RESORT, FAQS, DISCLAIMER } from "../lib/config";
 import { openWhatsApp, generalEnquiryMessage } from "../lib/whatsapp";
 import { RevealText, FadeIn } from "../components/site/RevealText";
 import { WhatsAppButton, CallButton, GhostButton } from "../components/site/Buttons";
 import EditorialMarquee from "../components/site/Marquee";
 import ImageCrop from "../components/site/ImageCrop";
 import EnquiryForm from "../components/site/EnquiryForm";
+import { useSEO } from "../hooks/useSEO";
 import {
   Accordion, AccordionContent, AccordionItem, AccordionTrigger
 } from "../components/ui/accordion";
+
+const WHY_ICONS = { UserRound, MessageCircle, BadgeIndianRupee, Compass };
+
+function DisclaimerStrip() {
+  return (
+    <div className="bg-[#2C402B] text-[#F7F5F0]" data-testid="disclaimer-strip">
+      <div className="mx-auto flex max-w-[1400px] items-center gap-3 px-6 py-3 lg:px-10">
+        <ShieldCheck className="h-4 w-4 shrink-0 text-[#D4CBBF]" />
+        <p className="text-[11px] leading-relaxed tracking-wide text-[#F7F5F0]/90 md:text-xs">
+          {DISCLAIMER}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function WhyDestinaSection() {
+  return (
+    <section className="bg-[#F7F5F0] py-24 md:py-32" data-testid="why-destina">
+      <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
+        <div className="mb-16 grid gap-8 md:grid-cols-12 md:items-end">
+          <div className="md:col-span-7">
+            <p className="text-[10px] uppercase tracking-[0.32em] text-[#0A170F]/60">Why Us</p>
+            <h2 className="mt-4 font-serif text-4xl leading-[1] tracking-tight text-[#0A170F] md:text-6xl">
+              Why book through Destina Tours and Travels?
+            </h2>
+          </div>
+          <div className="md:col-span-5 md:pb-2">
+            <p className="max-w-md text-sm leading-relaxed text-[#0A170F]/70">
+              We are an independent booking assistance service focused on making your Wayanad stay simple, transparent and personal.
+            </p>
+          </div>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {WHY_DESTINA.map((c, i) => {
+            const Icon = WHY_ICONS[c.icon] || Compass;
+            return (
+              <FadeIn key={c.title} delay={i * 0.06}>
+                <div className="flex h-full flex-col border border-[#0A170F]/12 bg-white p-8" data-testid={`why-card-${i}`}>
+                  <div className="grid h-12 w-12 place-items-center rounded-full bg-[#2C402B]/8 text-[#2C402B]">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="mt-6 font-serif text-2xl leading-tight text-[#0A170F]">{c.title}</h3>
+                  <p className="mt-4 text-sm leading-relaxed text-[#0A170F]/70">{c.body}</p>
+                </div>
+              </FadeIn>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 function HeroSection() {
   const ref = useRef(null);
@@ -376,10 +430,16 @@ function FaqSection() {
 }
 
 export default function Home() {
+  useSEO(
+    "Wayanad Resort Booking | Land's End Resort | Destina Tours and Travels",
+    "Enquire about Land's End Resort & Spa in Wayanad. Contact Destina Tours and Travels for availability, stay options, pricing information, and booking assistance."
+  );
   return (
     <main data-testid="home-page">
       <HeroSection />
+      <DisclaimerStrip />
       <EditorialMarquee />
+      <WhyDestinaSection />
       <TrustChapter />
       <FeaturedResort />
       <VisualExperience />

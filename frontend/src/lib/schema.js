@@ -15,10 +15,11 @@ export const travelAgencyLd = {
   areaServed: { "@type": "Place", name: "Wayanad, Kerala, India" },
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Wayanad",
-    addressRegion: "Kerala",
+    addressLocality: "Bangalore",
+    addressRegion: "Karnataka",
     addressCountry: "IN",
   },
+  openingHours: "Mo-Su 09:00-21:00",
   contactPoint: [
     {
       "@type": "ContactPoint",

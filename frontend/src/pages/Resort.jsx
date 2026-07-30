@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { MapPin, Clock, Users, ArrowUpRight } from "lucide-react";
-import { IMAGES, GALLERY, ROOMS, MEAL_PLANS, RESORT, FAQS } from "../lib/config";
+import { MapPin, Clock, Users, ArrowUpRight, ShieldCheck } from "lucide-react";
+import { IMAGES, GALLERY, ROOMS, MEAL_PLANS, RESORT, FAQS, DISCLAIMER } from "../lib/config";
 import { openWhatsApp, generalEnquiryMessage } from "../lib/whatsapp";
 import { RevealText, FadeIn } from "../components/site/RevealText";
 import { WhatsAppButton, CallButton } from "../components/site/Buttons";
@@ -298,6 +298,12 @@ export default function Resort() {
   return (
     <main data-testid="resort-page">
       <ResortHero />
+      <div className="bg-[#2C402B] text-[#F7F5F0]" data-testid="resort-disclaimer">
+        <div className="mx-auto flex max-w-[1400px] items-center gap-3 px-6 py-3 lg:px-10">
+          <ShieldCheck className="h-4 w-4 shrink-0 text-[#D4CBBF]" />
+          <p className="text-[11px] leading-relaxed text-[#F7F5F0]/90 md:text-xs">{DISCLAIMER}</p>
+        </div>
+      </div>
       <Overview />
       <ResortGallery />
       <Rooms />

@@ -1,0 +1,27 @@
+{
+  "summary": "Iteration 2 frontend-only retest of Destina Tours and Travels (Wayanad resort booking site). Ran 73 assertions across 3 Playwright runs on the public preview URL: homepage (title, disclaimer strip, why-cards, sticky CTAs, WhatsApp/tel intents, JSON-LD, google-site-verification, mobile bottom CTA), About, Contact, Resort (disclaimer + FAQ accordion + Resort/BreadcrumbList/FAQPage JSON-LD), all 3 policy pages, footer content + all 7 Quick Links navigation, and enquiry-form validation + valid WhatsApp submit. Result: 73/73 passed after I added the missing data-testids on the enquiry-form inline error messages. Real +917019540319 number now used everywhere (previous iteration's wa.me/91 placeholder bug is fixed). Zero console errors, zero 4xx/5xx requests, no broken images.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Footer (desktop >=1024px)", "issues": ["The fixed desktop sticky enquiry card (data-testid='desktop-sticky-cta', bottom-right) overlays the footer legal/disclaimer block at page bottom, partially covering the footer-disclaimer text ('...This is not the official website of Land's End...'). For Google Ads compliance the disclaimer should never be obscured — consider hiding/collapsing the sticky card when the footer enters the viewport, or adding bottom padding to the footer."]}
+    ]
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Prevent the desktop sticky CTA card from covering the footer disclaimer (hide sticky card on footer intersection or add right/bottom padding to footer legal row)."
+  ],
+  "critical_code_review_comments": [
+    "useJsonLd(id, data) depends on the `data` object identity; JSON-LD payloads built inline on each render will re-run the effect (re-stringify) on every render. Memoize the LD objects (useMemo) in App.js/Resort.jsx.",
+    "Home FAQ accordion uses data-testid 'faq-trigger-{i}' while Resort uses 'resort-faq-{i}' — harmless but inconsistent; consider a single convention.",
+    "EnquiryForm phone regex /^[\\d+\\-\\s()]{7,}$/ accepts non-numeric-length junk like '+++++++'; consider validating a 10-digit Indian number after stripping non-digits."
+  ],
+  "updated_files": ["/app/frontend/src/components/site/EnquiryForm.jsx (added data-testid=form-error-name/phone/checkin/checkout to inline validation messages)"],
+  "success_rate": {"backend": "n/a (skipped per request)", "frontend": "100% (73/73 assertions)"},
+  "seed_data_creation": "none (no backend); form filled with TEST QA User / +91 9876543210 only, no persistence",
+  "should_call_test_agent_after_fix": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "All spec items from iteration-2 request verified PASS: home/about/contact/resort/policy titles, disclaimer-strip + about/contact/resort/footer disclaimers, why-card-0..3, what-we-do-0..5, about-step-0..3, contact-address-line 'Bangalore, Karnataka, India', contact-hours-line, footer tagline (rendered uppercase via CSS — compare case-insensitively), 7 footer Quick Links navigation, resort-faq-0 answer 'No. ...', JSON-LD TravelAgency/WebSite (home) + Resort/BreadcrumbList/FAQPage (resort), google-site-verification meta, desktop-sticky-cta visible@1440 / display:none@390, mobile-bottom-cta@390, all wa.me/917019540319 window.open URLs, tel:+917019540319 hrefs, room-enquire-* testids (now 4 on home). Only open item is the sticky-CTA/footer overlap design nit. Note: monkey-patch window.open before clicking WhatsApp buttons; error <p> testids are now form-error-*.",
+  "rca_of_the_issue": "Iteration-1's wa.me/91 failure was caused by the placeholder phone '+91XXXXXXXXXX' being stripped by digitsOnly(); config.js now holds the real +917019540319 so all wa.me and tel: links resolve correctly. The 'empty submit shows no errors' failure in this run was a test-selector issue (errors use text-red-700 and had no testid) — fixed by adding data-testid attributes; validation logic itself works."
+}
