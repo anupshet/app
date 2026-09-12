@@ -74,4 +74,13 @@
     <image:image><image:loc>https://destinatoursandtravels.in/images/fortune-woods/photo-2.jpeg</image:loc><image:title>Fortune Woods AC cottage exterior</image:title></image:image>
     <image:image><image:loc>https://destinatoursandtravels.in/images/fortune-woods/photo-1.jpeg</image:loc><image:title>Fortune Woods AC cottage bedroom</image:title></image:image>
   </url>
+  <url>
+    <loc>https://destinatoursandtravels.in/dandeli/mantra</loc>
+    <changefreq>weekly</changefreq><priority>0.95</priority>
+    <image:image><image:loc>https://destinatoursandtravels.in/images/mantra/photo-5.jpeg</image:loc><image:title>Mantra Dandeli swimming pool at sunset</image:title></image:image>
+    <image:image><image:loc>https://destinatoursandtravels.in/images/mantra/photo-4.jpeg</image:loc><image:title>Mantra Dandeli cottages and green fields</image:title></image:image>
+    <image:image><image:loc>https://destinatoursandtravels.in/images/mantra/photo-3.jpeg</image:loc><image:title>Mantra Dandeli cottages in the evening</image:title></image:image>
+    <image:image><image:loc>https://destinatoursandtravels.in/images/mantra/photo-2.jpeg</image:loc><image:title>Mantra Dandeli garden paths</image:title></image:image>
+    <image:image><image:loc>https://destinatoursandtravels.in/images/mantra/photo-1.jpeg</image:loc><image:title>Mantra Dandeli bedroom and balcony</image:title></image:image>
+  </url>
 </urlset>

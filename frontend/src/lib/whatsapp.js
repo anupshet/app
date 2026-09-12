@@ -41,9 +41,9 @@ export function detailedEnquiryMessage({
   if (roomType) lines.push(`Room Type: ${roomType}`);
   if (mealPlan) lines.push(`Meal Plan: ${mealPlan}`);
   if (resort?.package) {
-    lines.push(`Package: ${resort.package.duration || resort.package.positioning}`);
+    if (resort.package.duration || resort.package.positioning) lines.push(`Package: ${resort.package.duration || resort.package.positioning}`);
     if (resort.package.tariffs) lines.push("Please share available cottage and sharing options.");
-    else lines.push(`Category: ${resort.package.category}`);
+    else if (resort.package.category) lines.push(`Category: ${resort.package.category}`);
   }
   if (message)  lines.push(`Notes: ${message}`);
   lines.push("", "Please share the latest availability and final price.");

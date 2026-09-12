@@ -140,10 +140,10 @@ export function packageResortLd(resort) {
       priceSpecification: { "@type": "UnitPriceSpecification", price: rate.price, priceCurrency: "INR", unitText: "person/night" },
       description: "Per Person Per Night. Prices and availability are subject to confirmation.",
     }))) : {
-      "@type": "Offer", name: `${resort.package.duration} Package — ${resort.package.category}`,
+      "@type": "Offer", name: [resort.package.duration ? `${resort.package.duration} Package` : resort.package.title, resort.package.category].filter(Boolean).join(" — "),
       price: resort.package.price, priceCurrency: "INR", url: `${SITE.url}${resort.path}`,
       priceSpecification: { "@type": "UnitPriceSpecification", price: resort.package.price, priceCurrency: "INR", unitText: "person" },
-      description: `₹${resort.package.price.toLocaleString("en-IN")} per ${resort.package.unit}. ${resort.package.category}. Prices and availability are subject to confirmation. ${resort.transportNote}`,
+      description: [`₹${resort.package.price.toLocaleString("en-IN")} per ${resort.package.unit}.`, resort.package.category ? `${resort.package.category}.` : null, "Prices and availability are subject to confirmation.", resort.transportNote].filter(Boolean).join(" "),
     },
   };
 }

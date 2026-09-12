@@ -1,5 +1,6 @@
 import { IMAGES, RESORT } from "./config";
 import { FORTUNE_WOODS } from "./fortuneWoods";
+import { MANTRA } from "./mantra";
 
 // Only supplied, available properties belong here. Menus, listings, packages and
 // detail routes read this catalogue; adding a resort never requires a redesign.
@@ -69,9 +70,9 @@ export const DESTINATIONS = [
     title: "Dandeli Resorts & Packages", headline: ["Experience", "Dandeli."],
     description: "Nature, adventure and time to unwind. Explore the Kali River, river activities, nature walks and wildlife experiences, with a relaxing resort stay to return to.",
     experiences: ["Kali River", "River activities", "Nature walks", "Adventure experiences", "Campfire evenings"],
-    image: NATURE_MIST.gallery[1], resorts: [NATURE_MIST, FORTUNE_WOODS],
+    image: NATURE_MIST.gallery[1], resorts: [NATURE_MIST, MANTRA, FORTUNE_WOODS],
     seoTitle: "Dandeli Resorts & Packages | Destina Tours & Travels",
-    seoDescription: "Discover Dandeli stays and packages with Destina Tours & Travels. Explore Nature Mist and Fortune Woods with independent resort booking assistance.",
+    seoDescription: "Discover Dandeli stays and packages with Destina Tours & Travels. Explore Nature Mist, Mantra and Fortune Woods with independent resort booking assistance.",
   },
   {
     id: "wayanad", name: "Wayanad", path: "/wayanad", location: "Kerala",

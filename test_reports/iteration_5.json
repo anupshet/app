@@ -1,0 +1,46 @@
+{
+  "summary": "Completed focused frontend-only regression for Mantra incremental addition and Fortune/Nature shared checks on public preview URL. Core requested flows passed including routing, pricing/content integrity, WhatsApp context, sitemap entries, ordering, and responsive behavior.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {
+        "screen": "Multiple pages (console)",
+        "issues": [
+          "Non-blocking runtime warning repeatedly logged: 'Please ensure that the container has a non-static position...' (likely Lenis/scroll container advisory)."
+        ]
+      }
+    ]
+  },
+  "test_report_links": [
+    "/root/.emergent/automation_output/20260912_183302/console_20260912_183302.log",
+    "/root/.emergent/automation_output/20260912_183349/console_20260912_183349.log",
+    "/root/.emergent/automation_output/20260912_183405/console_20260912_183405.log",
+    "/root/.emergent/automation_output/20260912_183422/console_20260912_183422.log",
+    "/root/.emergent/automation_output/20260912_183444/console_20260912_183444.log"
+  ],
+  "action_items": [
+    "Optional: review the recurring scroll-container console warning to keep production console clean."
+  ],
+  "critical_code_review_comments": [
+    "Mantra data model and guarded rendering are correctly preventing inherited Nature Mist-only fields (duration/check-in/check-out/category/sightseeing/external link) from leaking onto /dandeli/mantra.",
+    "Structured data for Mantra is present with Offer price=2200 and unitText='person'; sitemap includes /dandeli/mantra with 5 image entries.",
+    "No release-blocking frontend defects found in this scoped request."
+  ],
+  "updated_files": [
+    "/app/test_reports/iteration_5.json"
+  ],
+  "success_rate": {
+    "backend": "N/A (skipped per request)",
+    "frontend": "100% (focused scope passed)"
+  },
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Validated on https://wayanad-escape-1.preview.emergentagent.com: /dandeli/mantra route loads with exact 5 unique local images (hero photo-5 + gallery photo-4/3/2/1), exact ₹2,200/person in hero/package, 4 inclusions, 13 activities, FAQ expand works, no undefined text, no Mantra leakage of duration/category/check-in/out/sightseeing/external website. WhatsApp triggers (header/hero/package/activities/booking/final/footer/sticky) all open wa.me/917019540319 with exact Mantra message. Homepage and /dandeli ordering verified as Nature Mist → Mantra → Fortune Woods; desktop/mobile Dandeli nav and footer use same order with exactly 3 Dandeli resorts (no fourth). Homepage hero remains /images/fortune-woods/photo-4.jpeg. Mantra Get More Details routes correctly. Packages card shows ₹2,200 / person (not per night). Mantra SEO title/description/canonical/og:image correct. JSON-LD id=jsonld-mantra-lodging includes Offer 2200 + unitText person. sitemap.xml contains /dandeli/mantra and 5 Mantra image entries. Fortune checks passed: displayed starting ₹2,500/person/night qualified for River View 4-sharing with extra mattress; tariff table preserved (3000/2700/2500 and 2700/2500/2200); Maharaja ₹2,200 retained in note/FAQ. Nature Mist regression passed (₹1,500/person, 1 Night/1 Day, 11:30/10:30, category intact). Contact form Mantra selection shows ₹2,200/person without undefined category/duration and submits valid Mantra enquiry URL (intercepted only, no live send). Land's End room/meal fields remain present. Responsive checks at 320/390/768/1920 show no horizontal overflow; no blocking console errors.",
+  "rca of the issue": "No functional issue found in requested scope. One intermediate false-negative during exploratory checks came from broad text search/context, but targeted route-level assertions confirmed no Mantra leakage for '/person/night' or '1 Night / 1 Day'."
+}

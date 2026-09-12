@@ -42,15 +42,15 @@ export const ResortPackageDetails = ({ resort }) => {
             </div>)}
           </> : <>
           <p className="font-serif text-5xl text-[#8B5A2B]" data-testid={`${resort.id}-package-price`}>{formatPrice(pack.price)}<span className="font-sans text-base"> / {pack.unit}</span></p>
-          <p className="mt-4 text-sm" data-testid={`${resort.id}-package-category`}>{pack.category}</p>
-          <dl className="mt-8 flex flex-wrap gap-10 border-t border-[#0A170F]/15 pt-6">
+          {pack.category && <p className="mt-4 text-sm" data-testid={`${resort.id}-package-category`}>{pack.category}</p>}
+          {pack.checkIn && pack.checkOut && <dl className="mt-8 flex flex-wrap gap-10 border-t border-[#0A170F]/15 pt-6">
             <div data-testid={`${resort.id}-check-in`}><dt className="text-xs text-[#0A170F]/60">Check-in</dt><dd className="mt-2 font-serif text-2xl">{pack.checkIn}</dd></div>
             <div data-testid={`${resort.id}-check-out`}><dt className="text-xs text-[#0A170F]/60">Check-out</dt><dd className="mt-2 font-serif text-2xl">{pack.checkOut}</dd></div>
-          </dl>
+          </dl>}
           </>}
         </div>
         <div className="md:pt-4">
-          <h3 className="font-serif text-3xl" data-testid={`${resort.id}-inclusions-heading`}>Package includes</h3>
+          <h3 className="font-serif text-3xl" data-testid={`${resort.id}-inclusions-heading`}>{pack.inclusionsTitle || "Package includes"}</h3>
           <ul className="mt-7 grid gap-5 sm:grid-cols-2" data-testid={`${resort.id}-package-inclusions`}>{pack.inclusions.map((item, index) => <li key={item} className="flex items-center gap-3 border-b border-[#0A170F]/10 pb-4 text-sm" data-testid={`${resort.id}-package-inclusion-${index}`}><Check className="h-4 w-4 shrink-0 text-[#8B5A2B]" />{item}</li>)}</ul>
           {pack.rateNote && <p className="mt-6 text-sm leading-relaxed text-[#0A170F]/75" data-testid={`${resort.id}-rate-note`}>{pack.rateNote} All tariffs are per person per night, not room prices.</p>}
           <p className="mt-6 text-xs text-[#0A170F]/65" data-testid={`${resort.id}-package-price-note`}>Prices and availability are subject to confirmation.</p>

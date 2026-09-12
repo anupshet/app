@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { openWhatsApp, detailedEnquiryMessage } from "../../lib/whatsapp";
 import { ArrowUpRight } from "lucide-react";
-import { ALL_RESORTS, LANDS_END } from "../../lib/destinations";
+import { ALL_RESORTS, LANDS_END, formatPrice } from "../../lib/destinations";
 
 const ROOMS = ["Bungalow", "Valley View", "Arayum Purayum", "Forest View", "Not Sure"];
 const MEALS = ["CP", "MAP", "AP", "Not Sure"];
@@ -62,7 +62,7 @@ export default function EnquiryForm({ compact = false, testId = "enquiry-form", 
           <option value="">Help me choose a stay</option>
           {ALL_RESORTS.map((resort) => <option key={resort.id} value={resort.id} data-testid={`form-resort-option-${resort.id}`}>{`${resort.name} · ${resort.location}`}</option>)}
         </select>
-        {selectedResort?.package && <p className="mt-3 text-xs leading-relaxed text-[#0A170F]/65" data-testid="form-selected-package">{selectedResort.package.duration || selectedResort.package.positioning} · {selectedResort.package.category}</p>}
+        {selectedResort?.package && <p className="mt-3 text-xs leading-relaxed text-[#0A170F]/65" data-testid="form-selected-package">{[selectedResort.package.duration || selectedResort.package.positioning, selectedResort.package.category].filter(Boolean).join(" · ") || `${formatPrice(selectedResort.package.price)} / ${selectedResort.package.unit}`}</p>}
       </div>}
       <div className={compact ? "" : "md:col-span-2"}>
         <label htmlFor={`${testId}-name`} className={label}>Name</label>

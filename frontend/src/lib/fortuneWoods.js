@@ -17,9 +17,10 @@ export const FORTUNE_WOODS = {
   package: {
     positioning: "Stay • Food • Adventure • Fun",
     title: "Cottage options & pricing",
-    price: 2200, unit: "person/night", unitLabel: "Per Person Per Night",
-    category: "AC Maharaja Luxury Cottage · 4 Sharing",
-    rateNote: "Starting price applies to 4 Sharing in the AC Maharaja Luxury Cottage.",
+    price: 2500, unit: "person/night", unitLabel: "Per Person Per Night",
+    category: "AC River View Premium Cottage · 4 Sharing (with extra mattress)",
+    rateNote: "Shown starting price applies to 4 Sharing in the AC River View Premium Cottage, with extra mattress. Maharaja 4 Sharing remains ₹2,200/person/night.",
+    cardRateNote: "Maharaja 4 Sharing also available at ₹2,200/person/night.",
     inclusions: ["Buffet Lunch", "Evening Tea / Coffee", "Buffet Dinner", "Buffet Breakfast"],
     tariffs: [
       { id: "river-view", name: "AC River View Premium Cottage", rates: [
@@ -43,7 +44,7 @@ export const FORTUNE_WOODS = {
   seoTitle: "Fortune Woods Dandeli | Resort & Packages | Destina Tours & Travels",
   seoDescription: "Explore Fortune Woods Dandeli resort packages with AC cottages, river view stays, buffet meals and activities. Contact Destina for cottage options and availability.",
   faqs: [
-    { q: "What is the starting price at Fortune Woods?", a: "Prices start from ₹2,200/person/night for 4 Sharing in the AC Maharaja Luxury Cottage. All listed tariffs are Per Person Per Night, not room prices." },
+    { q: "Which option does the displayed starting price apply to?", a: "The displayed ₹2,500/person/night starting price is for 4 Sharing in the AC River View Premium Cottage, with extra mattress. The AC Maharaja Luxury Cottage 4 Sharing tariff remains ₹2,200/person/night. All listed tariffs are Per Person Per Night, not room prices." },
     { q: "What are the AC River View Premium Cottage rates?", a: "Per Person Per Night: 2 Sharing — ₹3,000; 3 Sharing — ₹2,700; 4 Sharing with extra mattress — ₹2,500." },
     { q: "What are the AC Maharaja Luxury Cottage rates?", a: "Per Person Per Night: 2 Sharing — ₹2,700; 3 Sharing — ₹2,500; 4 Sharing — ₹2,200." },
     { q: "Which meals are included?", a: "Buffet Lunch, Evening Tea / Coffee, Buffet Dinner and Buffet Breakfast." },

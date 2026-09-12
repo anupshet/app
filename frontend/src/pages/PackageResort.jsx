@@ -22,7 +22,7 @@ export default function PackageResort({ resort }) {
       <DestinationHero testId={`${resort.id}-hero`} image={resort.gallery[0]} eyebrow={resort.location} lines={resort.heroLines} description={resort.description}>
         <div className="mb-3 w-full" data-testid={`${resort.id}-hero-tariff`}>
           <p className="font-serif text-4xl" data-testid={`${resort.id}-hero-price`}>{resort.package.tariffs && <span className="mb-2 block font-sans text-xs">Starting from</span>}{formatPrice(resort.package.price)} <span className="font-sans text-sm">/ {resort.package.unit}</span></p>
-          <p className="mt-3 text-xs" data-testid={`${resort.id}-hero-category`}>{resort.package.duration || resort.package.positioning} · {resort.package.category}</p>
+          {(resort.package.duration || resort.package.positioning || resort.package.category) && <p className="mt-3 text-xs" data-testid={`${resort.id}-hero-category`}>{[resort.package.duration || resort.package.positioning, resort.package.category].filter(Boolean).join(" · ")}</p>}
           {resort.package.unitLabel && <p className="mt-2 text-xs" data-testid={`${resort.id}-hero-unit`}>{resort.package.unitLabel}</p>}
         </div>
         <WhatsAppButton label="Check Availability" message={resort.enquiryMessage} testId={`${resort.id}-hero-availability`} className="!bg-[#F7F5F0] hover:!bg-[#e6dfd0]" />

@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+    position: relative;
     --bg: #f7f5f0;
     --ink: #0a170f;
     --wood: #8b5a2b;

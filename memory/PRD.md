@@ -62,6 +62,7 @@ Frontend-only React SPA (react-router-dom v7), Tailwind, Framer Motion, Lenis, e
 | `/dandeli` | Destination overview and available Dandeli resort listing |
 | `/dandeli/nature-mist` | Complete Nature Mist detail/package page |
 | `/dandeli/fortune-woods` | Fortune Woods AC cottage packages with per-person-per-night sharing tariffs |
+| `/dandeli/mantra` | Mantra package at ₹2,200/person, with no assumed duration or sharing category |
 | `/wayanad` | Wayanad destination listing |
 | `/wayanad/lands-end-resort` | Existing Land's End page, content preserved |
 | `/wayanad-resorts/lands-end-resort` | Legacy client-side redirect preserving query parameters and hash |
@@ -75,6 +76,7 @@ Frontend-only React SPA (react-router-dom v7), Tailwind, Framer Motion, Lenis, e
 - `src/lib/config.js`: business contacts, broad disclaimer, retained separate Land's End disclaimer, all original Land's End room/meal/gallery/FAQ data.
 - `src/lib/destinations.js`: `NATURE_MIST`, `LANDS_END` listing reference, `DESTINATIONS`, derived `ALL_RESORTS` / `PACKAGE_RESORTS`; approved content, gallery, package, activity groups, FAQs, SEO and enquiry messages.
 - `src/lib/fortuneWoods.js`: second Dandeli resort's supplied facts, five exact originals, six cottage/sharing tariffs, meals, activities, metadata and WhatsApp messages. Imported into Dandeli `resorts` after Nature Mist.
+- `src/lib/mantra.js`: Mantra supplied data and five original JPEGs. Current Dandeli order is **Nature Mist → Mantra → Fortune Woods**; all menus/listings derive this order.
 - `src/lib/whatsapp.js`: URL construction and general/detailed enquiries.
 - `src/hooks/useEnquiryContext.js`: route-aware resort message for shared CTAs.
 - `src/hooks/useSEO.js`: route-specific title/description/canonical/OpenGraph/Twitter metadata.
@@ -86,7 +88,7 @@ Frontend-only React SPA (react-router-dom v7), Tailwind, Framer Motion, Lenis, e
 - `src/pages/Resort.jsx`: preserved Land's End page; only SEO hook/disclaimer alias and FAQ memoization updated.
 - `src/components/site/`: Header, DestinationNav, Footer, DestinationHero, DestinationUI, PackageCard, ResortCard, ResortDetailSections, DandeliExperience, WhyDestina, Buttons, EnquiryForm, sticky CTAs and retained existing motion components.
 - `src/App.js`: destination and package resort routes derive from catalogue; legacy URL redirects; route/hash scrolling.
-- `public/sitemap.xml`: 12 canonical URLs, five images for each Dandeli resort and retained Wayanad imagery. Homepage image is Fortune Woods aerial photo.
+- `public/sitemap.xml`: 13 canonical URLs, five images for each of the three Dandeli resorts and retained Wayanad imagery. Homepage image remains Fortune Woods aerial photo.
 - `public/robots.txt`: retained sitemap configuration.
 - `public/index.html`: multi-destination default SEO/OG tags; existing Search Console verification retained.
 
@@ -131,8 +133,8 @@ The pool photo is the hero; the four remaining images form the detail gallery. A
 
 ## Prioritised Next Actions
 - **P0: None** — all reported expansion issues corrected and verified.
-- **P1:** User review of the updated aerial homepage hero and Fortune Woods page.
-- **P2:** Add the THIRD Dandeli resort only after user supplies actual details/images; no placeholder or third-resort page exists.
+- **P1:** User review of Mantra, its second position in the lists, and the Fortune Woods displayed starting-rate qualification.
+- **P2:** No fourth Dandeli resort requested or created. Only add further resorts when explicitly requested with supplied facts/photos.
 - **P2:** Add genuine guest testimonials once collected (never fabricate reviews).
 - **P2:** Optional conversion measurement for WhatsApp/phone enquiries, only if requested.
 
@@ -143,7 +145,7 @@ The pool photo is the hero; the four remaining images form the detail gallery. A
 - Keep Nature Mist supplied package details separate from Land's End room/meal-plan data.
 - Read preview URL from current `frontend/.env`; production domain remains separate SEO configuration.
 
-## Latest Increment — Fortune Woods (2026-09-12)
+## Prior Increment — Fortune Woods (2026-09-12)
 ### User Requirements
 Add ONE new Dandeli resort, Fortune Woods – Dandeli, as the second resort alongside Nature Mist. Minimise credits and code changes: reuse Nature Mist's existing page template, resort/package cards, gallery, pricing section, activities, FAQ, navigation, responsive styling and WhatsApp. Do not redesign, generate/AI-enhance images, create new complex UI, fabricate another resort, alter Nature Mist information/images/prices, or change Land's End/Wayanad/legal/contact/theme data.
 
@@ -153,7 +155,7 @@ User provided five Fortune Woods photos and explicitly requested **the SECOND up
 - Resort: **Fortune Woods – Dandeli**, Dandeli, Karnataka.
 - Summary: **Premium AC cottages with river views, comfortable stays, buffet meals, adventure activities and family-friendly entertainment in Dandeli.**
 - Positioning: **Stay • Food • Adventure • Fun**.
-- Starting from **₹2,200/person/night**, specifically **4 Sharing in AC Maharaja Luxury Cottage**.
+- Original starting rate was ₹2,200/person/night for Maharaja 4 Sharing. **Current displayed starting rate is ₹2,500/person/night for River View Premium 4 Sharing (with extra mattress)**, per the later user request. Maharaja's 4 Sharing ₹2,200/person/night tariff is retained and explicitly disclosed; no six-row tariff changes.
 - All rates explicitly **Per Person Per Night**, never room totals. No taxes, surcharges, check-in/out times, fixed-duration package, sightseeing or external resort website supplied; none invented.
 
 | Cottage | 2 Sharing | 3 Sharing | 4 Sharing |
@@ -201,3 +203,50 @@ All five are used on the dedicated Fortune Woods page: one hero plus four galler
 - Nature Mist data/display and Land's End room/meal/contact flow regression passed.
 - No horizontal overflow at 320/390/768/1440/1920, and no observed console regressions.
 - WhatsApp tests intercept genuine wa.me links only; no real enquiries sent. No app flow is mocked or known broken.
+
+## Latest Increment — Mantra + Fortune Featured Price (2026-09-12)
+### User Requirements and Clarifications
+Low-cost content addition using the exact existing Dandeli templates/components; no redesign, new integration, AI images, invented facts or fourth resort. Add **Mantra – Dandeli** at `/dandeli/mantra`. User's final order supersedes their earlier list: **Nature Mist → Mantra → Fortune Woods**. Add to homepage resort section, Dandeli page and existing navigation; other data-driven package/footer/contact surfaces inherit the entry.
+
+User also requested Fortune Woods displayed starting price ₹2,500, then clarified **"no let it be 2200 for maharaja tents"**. Retain the original six tariffs including Maharaja 4 Sharing ₹2,200; display ₹2,500 against the already-provided River View Premium 4 Sharing option (with extra mattress). The card, package note and FAQ explicitly retain the cheaper Maharaja option, avoiding misleading minimum-rate claims. Existing cottage names, other rates, meals, activities and photos are unchanged.
+
+### Exact Mantra Content
+- Name/location: Mantra – Dandeli; Dandeli, Karnataka.
+- Tariff: **₹2,200 / person**. No supplied duration, room rate, sharing category, times, taxes, extra mattress or additional charges; none inferred.
+- Summary: **Enjoy a comfortable Dandeli stay with buffet meals, river activities, nature experiences, adventure activities and evening campfire entertainment.**
+- Highlights (7): Buffet Meals; River Activities; Nature Walk; Swimming Pool; Rain Dance; Campfire; Kids Play Area.
+- **Package Inclusions** (4): Buffet Lunch (Mix); Evening Tea/Coffee; Buffet Dinner (Mix); Buffet Breakfast.
+- **Activities Included:** (13): River Kayaking; River Boating; River Zorbing; River Swimming; Nature Walk; Archery; Swimming Pool; Rain Dance; Badminton; Target Shooting; Night Campfire; Carom; Kids Play Area. Preserve "Carom" spelling and exact meal labels.
+- All direct Mantra enquiry CTAs: `Hi Destina Tours & Travels, I am interested in Mantra, Dandeli. Please share availability, pricing and booking details.` Existing +917019540319 and wa.me implementation retained.
+- Get More Details routes to `/dandeli/mantra`, not WhatsApp.
+- SEO title: `Mantra Dandeli Resort | Destina Tours & Travels`.
+- SEO description: `Explore Mantra Dandeli with buffet meals, river activities, nature experiences, swimming pool, adventure activities and campfire. Enquire with Destina Tours & Travels.`
+
+### Mantra Photos
+Five supplied original JPEGs downloaded byte-for-byte under `frontend/public/images/mantra/`. Attachment listing is reversed relative to user presentation:
+| User order | Content | Local file / usage |
+|---|---|---|
+| 1 | Pool at sunset | photo-5.jpeg — hero and resort card |
+| 2 | Cottages and green fields | photo-4.jpeg — first gallery image/package card |
+| 3 | Cottages at night | photo-3.jpeg — gallery |
+| 4 | Daytime cottage pathway | photo-2.jpeg — gallery |
+| 5 | Bedroom and balcony | photo-1.jpeg — gallery |
+All five appear on Mantra's page, using the unchanged gallery component. No image generation, AI enhancement, replacement or file alteration. Homepage retains Fortune Woods' aerial hero.
+
+### Implementation Scope
+- New `mantra.js` data entry; registration between Nature Mist and Fortune Woods; added sitemap route and five images.
+- Reused existing cards, detail page, gallery, pricing, meals, activities, FAQ, buttons, navigation and responsive styles. No new UI components/dependencies.
+- Minimal optional-field guards prevent an unspecified duration/category/timing from appearing as `undefined`, empty check-in/out rows or a dangling separator. Contact message composition omits absent fields; actual WhatsApp integration/number untouched.
+- `exactPrice` suppresses "Starting from" only for Mantra's resort card; all its prices use `person`, never `person/night`.
+- Existing pricing section handles Mantra's supplied tariff without pretending it is a Nature Mist package. JSON-LD contains Offer 2200 with person unit and no fabricated fields.
+- Fortune featured-price/category/note/FAQ updated as requested, six underlying tariff rows preserved.
+- Testing identified a non-blocking Framer Motion advisory: default document scroll container was statically positioned. Added one `position: relative` declaration on root to resolve it without layout/theme/animation redesign.
+
+### Verification — PASS
+- `yarn build` compiled successfully. Before/after hashes verify the full Nature Mist data block and original Land's End page, contact/business config and legal-page sources are unchanged.
+- One Mantra hero smoke screenshot passed with the correct first photo and ₹2,200/person price.
+- `/app/test_reports/iteration_5.json`: **100% of focused functional scope passed** — three-resort ordering on homepage/Dandeli/nav/footer, all Mantra facts/images/SEO/structured data/sitemap, details/WhatsApp links, contact form and existing Nature/Fortune/Land's End checks.
+- Fortune displayed ₹2,500 River View option and preserved Maharaja ₹2,200 explicitly verified.
+- Responsive checks passed at 320/390/768/1920, without horizontal overflow or blocking errors.
+- Follow-up self-test fixed and verified the scroll-container advisory on fresh Mantra and homepage loads: root relative, fixed header remains at viewport top, no overflow, warning absent. Log: `/root/.emergent/automation_output/20260912_183617/console_20260912_183617.log`.
+- No outstanding defects, mocked app integrations, authentication/credential changes or real WhatsApp messages sent.
