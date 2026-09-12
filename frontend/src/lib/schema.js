@@ -12,7 +12,10 @@ export const travelAgencyLd = {
   url: SITE.url,
   email: BUSINESS.email,
   telephone: BUSINESS.phone,
-  areaServed: { "@type": "Place", name: "Wayanad, Kerala, India" },
+  areaServed: [
+    { "@type": "Place", name: "Dandeli, Karnataka, India" },
+    { "@type": "Place", name: "Wayanad, Kerala, India" },
+  ],
   address: {
     "@type": "PostalAddress",
     addressLocality: "Bangalore",
@@ -35,7 +38,8 @@ export const travelAgencyLd = {
     },
   ],
   sameAs: [`tel:${telNum}`, `https://wa.me/${waNum}`],
-  slogan: "Booking assistance for premium stays in Wayanad",
+  slogan: "Independent Travel & Resort Booking Assistance Service",
+  description: "An independent travel and resort booking assistance service offering curated stays and packages across selected destinations, including Dandeli and Wayanad.",
 };
 
 export const websiteLd = {
@@ -51,9 +55,9 @@ export const websiteLd = {
 export const resortLodgingLd = {
   "@context": "https://schema.org",
   "@type": "Resort",
-  "@id": `${SITE.url}/wayanad-resorts/lands-end-resort#resort`,
+  "@id": `${SITE.url}/wayanad/lands-end-resort#resort`,
   name: RESORT.name,
-  url: `${SITE.url}/wayanad-resorts/lands-end-resort`,
+  url: `${SITE.url}/wayanad/lands-end-resort`,
   description:
     "Land's End Resort & Spa is a premium cliffside retreat in Wayanad with warm wooden interiors, an infinity pool overlooking the valley, and Café Bamboo — bookable via Destina Tours and Travels.",
   image: [IMAGES.hero, IMAGES.valley, IMAGES.bungalow, IMAGES.bedroom, IMAGES.cafe],
@@ -70,8 +74,6 @@ export const resortLodgingLd = {
     { "@type": "LocationFeatureSpecification", name: "Infinity Pool", value: true },
     { "@type": "LocationFeatureSpecification", name: "Valley View", value: true },
     { "@type": "LocationFeatureSpecification", name: "Café / Restaurant", value: true },
-    { "@type": "LocationFeatureSpecification", name: "Free Parking", value: true },
-    { "@type": "LocationFeatureSpecification", name: "Wi-Fi", value: true },
   ],
   makesOffer: {
     "@type": "Offer",
@@ -84,7 +86,6 @@ export const resortLodgingLd = {
       unitCode: "DAY",
       referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "DAY" },
     },
-    availability: "https://schema.org/InStock",
     seller: { "@id": `${SITE.url}#organization` },
     description: "Starting from ₹5,000 per night. Final pricing subject to travel dates, availability, taxes and selected meal plan.",
   },
@@ -105,8 +106,8 @@ export const resortBreadcrumbLd = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
-    { "@type": "ListItem", position: 2, name: "Wayanad Resorts", item: `${SITE.url}/wayanad-resorts/lands-end-resort` },
-    { "@type": "ListItem", position: 3, name: "Land's End Resort & Spa", item: `${SITE.url}/wayanad-resorts/lands-end-resort` },
+    { "@type": "ListItem", position: 2, name: "Wayanad Resorts", item: `${SITE.url}/wayanad` },
+    { "@type": "ListItem", position: 3, name: "Land's End Resort & Spa", item: `${SITE.url}/wayanad/lands-end-resort` },
   ],
 };
 
@@ -119,5 +120,30 @@ export function faqLd(faqs) {
       name: f.q,
       acceptedAnswer: { "@type": "Answer", text: f.a },
     })),
+  };
+}
+
+export function packageResortLd(resort) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Resort",
+    "@id": `${SITE.url}${resort.path}#resort`,
+    name: resort.name,
+    url: `${SITE.url}${resort.path}`,
+    description: resort.description,
+    image: resort.gallery.map((image) => new URL(image.src, SITE.url).href),
+    address: { "@type": "PostalAddress", addressLocality: resort.city, addressRegion: resort.state, addressCountry: "IN" },
+    checkinTime: resort.package.checkInISO, checkoutTime: resort.package.checkOutISO,
+    makesOffer: resort.package.tariffs ? resort.package.tariffs.flatMap((cottage) => cottage.rates.map((rate) => ({
+      "@type": "Offer", name: `${cottage.name} — ${rate.sharing} Sharing${rate.note ? ` (${rate.note})` : ""}`,
+      price: rate.price, priceCurrency: "INR", url: `${SITE.url}${resort.path}`,
+      priceSpecification: { "@type": "UnitPriceSpecification", price: rate.price, priceCurrency: "INR", unitText: "person/night" },
+      description: "Per Person Per Night. Prices and availability are subject to confirmation.",
+    }))) : {
+      "@type": "Offer", name: `${resort.package.duration} Package — ${resort.package.category}`,
+      price: resort.package.price, priceCurrency: "INR", url: `${SITE.url}${resort.path}`,
+      priceSpecification: { "@type": "UnitPriceSpecification", price: resort.package.price, priceCurrency: "INR", unitText: "person" },
+      description: `₹${resort.package.price.toLocaleString("en-IN")} per ${resort.package.unit}. ${resort.package.category}. Prices and availability are subject to confirmation. ${resort.transportNote}`,
+    },
   };
 }

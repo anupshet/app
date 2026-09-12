@@ -1,0 +1,26 @@
+{
+  "type": "focused frontend follow-up",
+  "date": "2026-09-12",
+  "parent_report": "/app/test_reports/iteration_3.json",
+  "status": "pass",
+  "fixed_issues": [
+    "Removed homepage EditorialMarquee so main section order matches requested hierarchy exactly.",
+    "Rendered resort option labels as single text expressions, eliminating span-inside-option runtime console warnings."
+  ],
+  "verified": [
+    "Homepage direct section order matches hero, packages, featured Dandeli, experience Dandeli, Why Destina, Wayanad, final enquiry.",
+    "Contact resort select has 3 options (generic plus 2 actual resorts), no element children inside options.",
+    "Switching between Nature Mist and Land's End shows appropriate package/room/meal controls.",
+    "Actual Nature Mist form-submit button opens correct per-person package enquiry wa.me URL to +917019540319, without Land's End fields.",
+    "Actual Land's End form-submit button preserves Bungalow and CP room/meal enquiry fields without Nature Mist package fields.",
+    "Fresh homepage/contact loads and final contact form interactions have no captured browser errors."
+  ],
+  "live_messages_sent": false,
+  "app_flows_mocked": false,
+  "testing_note": "window.open intercepted to inspect real generated URLs without contacting the business. Initial self-test selected a no-URL browser probe; corrected capture filters for wa.me URLs. All final assertions passed.",
+  "remaining_issues": [],
+  "logs": [
+    "/root/.emergent/automation_output/20260912_174755/console_20260912_174755.log",
+    "/root/.emergent/automation_output/20260912_174855/console_20260912_174855.log"
+  ]
+}

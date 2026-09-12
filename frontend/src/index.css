@@ -114,6 +114,28 @@ html.lenis body {
 }
 
 /* Reduce motion respectfully */
+.destination-hero {
+    min-height: min(82svh, 820px);
+}
+.destination-hero-home {
+    min-height: min(88svh, 860px);
+}
+.destination-hero > div:last-child {
+    min-height: inherit;
+}
+@media (max-width: 639px) {
+    .destination-hero,
+    .destination-hero-home { min-height: 76svh; }
+}
+@media (min-width: 1024px) {
+    /* Keep the existing sticky enquiry card clear of hero text and actions. */
+    .destination-hero > div:last-child { padding-right: 330px; }
+}
+a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--wood);
+    outline-offset: 4px;
+}
+
 @media (prefers-reduced-motion: reduce) {
     * {
         animation-duration: 0.01ms !important;

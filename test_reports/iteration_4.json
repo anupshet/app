@@ -1,0 +1,34 @@
+{
+  "summary": "Completed focused frontend-only regression for Fortune Woods integration on public preview URL. Verified route, SEO/canonical, JSON-LD (6 offers), tariffs, inclusions, activities, galleries, homepage hero swap, Dandeli listings/nav menus, WhatsApp context, packages card behavior, contact form resort-switching, and shared Nature Mist/Land's End regressions across desktop/mobile viewports.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/root/.emergent/automation_output/20260912_181503/console_20260912_181503.log",
+    "/root/.emergent/automation_output/20260912_181534/console_20260912_181534.log",
+    "/root/.emergent/automation_output/20260912_181551/console_20260912_181551.log"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "No release-blocking frontend code issues found in this focused Fortune Woods regression scope.",
+    "Note from verification: desktop sticky CTA intentionally auto-hides when footer intersects; if tested after scrolling to footer, sticky WhatsApp click will not fire by design (pointer-events disabled)."
+  ],
+  "updated_files": [
+    "/app/test_reports/iteration_4.json"
+  ],
+  "success_rate": {
+    "backend": "N/A (skipped per request)",
+    "frontend": "100% (focused regression scope passed)"
+  },
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Verified PASS in runtime: /dandeli/fortune-woods title/meta/canonical, hero photo-5 + gallery photo-4/3/2/1 ordering and load, 6 exact tariffs with Per Person Per Night and river-view 4-sharing extra mattress note, 4 exact meals, 12 exact activities, no Nature Mist timing/sightseeing leakage on Fortune page, FAQ expand behavior, homepage hero uses /images/fortune-woods/photo-4.jpeg, homepage and /dandeli show exactly Nature Mist + Fortune Woods for Dandeli, desktop/mobile Dandeli dropdown contains only overview + Nature Mist + Fortune Woods, packages page Fortune card routes correctly and does not render check-in/out rows for Fortune, footer Fortune link works, WhatsApp URLs captured only as https://wa.me/917019540319 and Fortune-context text across hero/package/final/header/footer/sticky (sticky works when visible), Contact form Fortune selection has no undefined and no Nature Mist assumption, Land's End room/meal inputs still present and message includes selected room/meal, no horizontal overflow at 320/390/768/1440/1920, no option-nesting console regression observed.",
+  "rca of the issue": "No functional defect found in requested scope. One intermediate test false-negative was caused by clicking sticky CTA after scrolling into footer where sticky auto-hide behavior is intentional."
+}

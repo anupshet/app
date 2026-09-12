@@ -25,7 +25,7 @@ const STEPS = [
 export default function About() {
   useSEO(
     "About Us | Destina Tours and Travels",
-    "Destina Tours and Travels is an independent travel and resort booking assistance business helping travellers enquire about stays such as Land's End Resort & Spa, Wayanad."
+    "Destina Tours & Travels offers independent travel and resort booking assistance for curated stays and packages in Dandeli and Wayanad."
   );
   return (
     <main data-testid="about-page">
@@ -61,12 +61,10 @@ export default function About() {
           </div>
           <div className="md:col-span-7">
             <p className="text-base leading-relaxed text-[#0A170F]/80 md:text-lg">
-              Destina Tours and Travels is a travel and resort booking assistance business helping travellers
-              discover and enquire about selected resort stays and travel experiences.
+              Destina Tours and Travels is an independent travel and resort booking assistance service offering curated stays and packages across selected destinations, including Dandeli and Wayanad.
             </p>
             <p className="mt-6 text-sm leading-relaxed text-[#0A170F]/70">
-              We are an independent booking assistance business and are not the official website of Land's End
-              Resort &amp; Spa. Our role is to help you plan, price and finalise your stay without any friction.
+              We are not the official website of any listed resort. Our role is to help you plan, price and finalise your stay with personal, transparent guidance.
             </p>
           </div>
         </div>
@@ -150,12 +148,10 @@ export default function About() {
               <CallButton variant="primary" className="!bg-[#0A170F] !text-[#F7F5F0] hover:!bg-[#2C402B]" />
             </div>
             <p className="mt-6 text-xs text-[#0A170F]/60">
-              Looking for the resort details?{" "}
-              <Link to="/wayanad-resorts/lands-end-resort" className="underline underline-offset-2 hover:text-[#8B5A2B]">
-                Explore Land's End Resort &amp; Spa
-              </Link>{" "}
-              or{" "}
-              <Link to="/contact" className="underline underline-offset-2 hover:text-[#8B5A2B]">contact us</Link>.
+              Explore our destinations:{" "}
+              <Link to="/dandeli" data-testid="about-explore-dandeli" className="underline underline-offset-2 hover:text-[#8B5A2B]">Dandeli</Link>{" · "}
+              <Link to="/wayanad" data-testid="about-explore-wayanad" className="underline underline-offset-2 hover:text-[#8B5A2B]">Wayanad</Link>{" · "}
+              <Link to="/contact" data-testid="about-contact" className="underline underline-offset-2 hover:text-[#8B5A2B]">Contact us</Link>.
             </p>
           </div>
         </div>

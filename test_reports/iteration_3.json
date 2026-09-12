@@ -1,0 +1,51 @@
+{
+  "summary": "Frontend-only deep regression completed on public preview URL. Most navigation, routing, WhatsApp integrations, SEO/JSON-LD, responsive behavior, and Land's End regression checks passed. Two issues remain: homepage section order deviation and a recurring Contact-page console hydration error.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "Home page content flow",
+        "issue": "Homepage includes an extra editorial marquee section between 'Experience Dandeli' and 'Why Destina', breaking the exact requested order.",
+        "selector": "[data-testid='editorial-marquee']",
+        "priority": "HIGH"
+      }
+    ],
+    "integration_issues": [
+      {
+        "flow": "Contact page form render",
+        "issue": "Browser console repeatedly reports hydration/HTML nesting error: '<span> cannot be a child of <option>' while rendering destination options in the enquiry form.",
+        "affected_selectors": [
+          "[data-testid='form-resort']"
+        ]
+      }
+    ],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/root/.emergent/automation_output/20260912_174342/console_20260912_174342.log",
+    "/root/.emergent/automation_output/20260912_174619/console_20260912_174619.log"
+  ],
+  "action_items": [
+    "Remove or reposition the editorial marquee so homepage sequence exactly matches: hero → Popular Dandeli Packages → Featured Dandeli Resort → Experience Dandeli → Why Destina → Explore Wayanad → final WhatsApp CTA → footer.",
+    "Fix Contact page option rendering path causing '<span> inside <option>' hydration console error; ensure plain text nodes inside <option> elements at runtime."
+  ],
+  "critical_code_review_comments": [
+    "Current Home.jsx injects <EditorialMarquee /> between DandeliExperience and WhyDestina; this conflicts with explicit content-order requirement.",
+    "Console errors on Contact route indicate invalid option subtree during runtime instrumentation/hydration; this should be resolved before release because requirement explicitly includes console-error checks."
+  ],
+  "updated_files": [
+    "/app/test_reports/iteration_3.json"
+  ],
+  "success_rate": {
+    "backend": "N/A (skipped per request)",
+    "frontend": "96%"
+  },
+  "seed_data_creation": "None",
+  "retest_needed": true,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Verified PASS: all required routes including legacy redirect query/hash preservation, desktop dropdown behavior (click/Escape/Enter), mobile drawer close on route change, Nature Mist package/times/inclusions/activities/sightseeing/transport note/FAQs, 5 Nature Mist images and uniqueness, WhatsApp numbers/messages across contextual/global flows (+917019540319), Land's End room/price/gallery/meal/FAQ/enquiry behavior, contact form resort-switch logic + validations, footer links/destination list, desktop sticky hide near footer with tab-order removal, mobile CTA footer non-overlap, canonical/OG/meta per route, TravelAgency + NatureMist JSON-LD, sitemap URL/image counts, robots, responsive widths (320/390/768/1024/1440/1920) with no horizontal overflow, and data-testid coverage on tested routes.",
+  "rca of the issue": "RCA-1 (order mismatch): Home.jsx includes EditorialMarquee between DandeliExperience and WhyDestina, introducing an extra section not listed in mandatory homepage order. RCA-2 (console error): On Contact page, runtime output shows a span node nested inside option under form-resort, triggering React hydration/DOM nesting error in console. Repro: open /contact and inspect console logs; error appears immediately."
+}

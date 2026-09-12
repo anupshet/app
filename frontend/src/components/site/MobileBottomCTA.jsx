@@ -1,7 +1,9 @@
 import { MessageCircle, Phone } from "lucide-react";
-import { openWhatsApp, generalEnquiryMessage, telLink } from "../../lib/whatsapp";
+import { openWhatsApp, telLink } from "../../lib/whatsapp";
+import { useEnquiryContext } from "../../hooks/useEnquiryContext";
 
 export default function MobileBottomCTA() {
+  const { message } = useEnquiryContext();
   return (
     <div
       data-testid="mobile-bottom-cta"
@@ -10,7 +12,7 @@ export default function MobileBottomCTA() {
     >
       <div className="mx-3 mb-3 flex gap-2 rounded-full border border-white/40 bg-white/80 p-1.5 backdrop-blur-xl shadow-[0_8px_30px_rgba(10,23,15,0.15)]">
         <button
-          onClick={() => openWhatsApp(generalEnquiryMessage())}
+          onClick={() => openWhatsApp(message)}
           data-testid="mobile-cta-whatsapp"
           className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[#25D366] py-3 text-xs uppercase tracking-[0.18em] text-[#0A170F]"
         >

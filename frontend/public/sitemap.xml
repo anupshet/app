@@ -6,18 +6,39 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://customer-assets-m6fa6gv7.emergentagent.net/job_4d361d6d-d29f-4410-be14-fdb7b63b77db/artifacts/vtpolilk_WhatsApp%20Image%202026-07-06%20at%202.19.09%20PM.jpeg</image:loc>
-      <image:title>Land's End Resort Infinity Pool, Wayanad</image:title>
+      <image:loc>https://destinatoursandtravels.in/images/fortune-woods/photo-4.jpeg</image:loc>
+      <image:title>Aerial view of Fortune Woods Dandeli</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://destinatoursandtravels.in/wayanad-resorts/lands-end-resort</loc>
+    <loc>https://destinatoursandtravels.in/wayanad/lands-end-resort</loc>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
     <image:image>
       <image:loc>https://customer-assets-m6fa6gv7.emergentagent.net/job_4d361d6d-d29f-4410-be14-fdb7b63b77db/artifacts/rc0gh76i_WhatsApp%20Image%202026-07-06%20at%202.19.11%20PM.jpeg</image:loc>
       <image:title>Land's End Resort Valley View, Wayanad</image:title>
     </image:image>
+  </url>
+  <url>
+    <loc>https://destinatoursandtravels.in/dandeli</loc>
+    <changefreq>weekly</changefreq><priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://destinatoursandtravels.in/dandeli/nature-mist</loc>
+    <changefreq>weekly</changefreq><priority>0.95</priority>
+    <image:image><image:loc>https://destinatoursandtravels.in/images/nature-mist/pool.webp</image:loc><image:title>Nature Mist Dandeli pool</image:title></image:image>
+    <image:image><image:loc>https://destinatoursandtravels.in/images/nature-mist/garden.webp</image:loc><image:title>Nature Mist cottage garden</image:title></image:image>
+    <image:image><image:loc>https://destinatoursandtravels.in/images/nature-mist/campfire.webp</image:loc><image:title>Nature Mist campfire evening</image:title></image:image>
+    <image:image><image:loc>https://destinatoursandtravels.in/images/nature-mist/dining.webp</image:loc><image:title>Nature Mist dining pavilion</image:title></image:image>
+    <image:image><image:loc>https://destinatoursandtravels.in/images/nature-mist/bedroom.webp</image:loc><image:title>Nature Mist bedroom</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://destinatoursandtravels.in/wayanad</loc>
+    <changefreq>weekly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://destinatoursandtravels.in/packages</loc>
+    <changefreq>weekly</changefreq><priority>0.9</priority>
   </url>
   <url>
     <loc>https://destinatoursandtravels.in/about-us</loc>
@@ -43,5 +64,14 @@
     <loc>https://destinatoursandtravels.in/booking-policy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://destinatoursandtravels.in/dandeli/fortune-woods</loc>
+    <changefreq>weekly</changefreq><priority>0.95</priority>
+    <image:image><image:loc>https://destinatoursandtravels.in/images/fortune-woods/photo-5.jpeg</image:loc><image:title>Fortune Woods riverside terrace</image:title></image:image>
+    <image:image><image:loc>https://destinatoursandtravels.in/images/fortune-woods/photo-4.jpeg</image:loc><image:title>Fortune Woods aerial property view</image:title></image:image>
+    <image:image><image:loc>https://destinatoursandtravels.in/images/fortune-woods/photo-3.jpeg</image:loc><image:title>Fortune Woods river-view restaurant</image:title></image:image>
+    <image:image><image:loc>https://destinatoursandtravels.in/images/fortune-woods/photo-2.jpeg</image:loc><image:title>Fortune Woods AC cottage exterior</image:title></image:image>
+    <image:image><image:loc>https://destinatoursandtravels.in/images/fortune-woods/photo-1.jpeg</image:loc><image:title>Fortune Woods AC cottage bedroom</image:title></image:image>
   </url>
 </urlset>

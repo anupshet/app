@@ -36,7 +36,7 @@ export function PrivacyPolicy() {
 export function Terms() {
   return (
     <PolicyLayout chapter="Terms" title="Terms & Conditions">
-      <p>By using this website, you agree to the terms outlined below. Destina Tours and Travels acts as a booking assistance service and is not the official website of Land's End Resort &amp; Spa.</p>
+      <p>By using this website, you agree to the terms outlined below. Destina Tours and Travels acts as an independent travel and resort booking assistance service and is not the official website of any listed resort, including Nature Mist – Dandeli and Land's End Resort &amp; Spa.</p>
       <h2>Pricing &amp; availability</h2>
       <p>All prices displayed on this website are indicative starting rates. Final pricing and availability are subject to confirmation based on travel dates, room availability, applicable taxes and the selected meal plan. Tariffs may change without prior notice.</p>
       <h2>Booking confirmation</h2>

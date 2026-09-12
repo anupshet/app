@@ -9,7 +9,7 @@ import { IMAGES } from "../lib/config";
 export default function Contact() {
   useSEO(
     "Contact Us | Destina Tours and Travels",
-    "Contact Destina Tours and Travels for Wayanad resort booking assistance. WhatsApp, call or email us for availability, pricing information and stay options at Land's End Resort & Spa."
+    "Contact Destina Tours & Travels for Dandeli and Wayanad resort booking assistance. WhatsApp, call or email us for Nature Mist packages, Land's End stays and availability."
   );
   return (
     <main data-testid="contact-page">
@@ -63,7 +63,7 @@ export default function Contact() {
                 Submitting opens WhatsApp with your enquiry pre-filled. Prices and availability are subject to confirmation.
               </p>
               <div className="mt-8">
-                <EnquiryForm />
+                <EnquiryForm destinationMode />
               </div>
             </div>
           </div>
@@ -76,12 +76,12 @@ export default function Contact() {
 function ContactLine({ icon: Icon, label, value, testId }) {
   return (
     <li className="flex items-center gap-4 border-b border-[#0A170F]/15 pb-6" data-testid={testId}>
-      <div className="grid h-10 w-10 place-items-center rounded-full border border-[#0A170F]/20">
+      <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[#0A170F]/20">
         <Icon className="h-4 w-4 text-[#8B5A2B]" />
       </div>
-      <div>
+      <div className="min-w-0">
         <p className="text-[10px] uppercase tracking-[0.24em] text-[#0A170F]/60">{label}</p>
-        <p className="mt-1 font-serif text-2xl leading-none text-[#0A170F]">{value}</p>
+        <p className="mt-1 break-words font-serif text-xl leading-snug text-[#0A170F] sm:text-2xl">{value}</p>
       </div>
     </li>
   );

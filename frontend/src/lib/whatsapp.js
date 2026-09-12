@@ -14,7 +14,7 @@ export function telLink() {
 }
 
 export function generalEnquiryMessage() {
-  return `Hi ${BUSINESS.name}, I would like to enquire about staying at ${RESORT.name}, ${RESORT.city}. Please share the latest availability and best available price.`;
+  return `Hi ${BUSINESS.name}, I would like to enquire about resort stays and packages in Dandeli or Wayanad. Please help me with availability, pricing and booking details.`;
 }
 
 export function detailedEnquiryMessage({
@@ -27,9 +27,9 @@ export function detailedEnquiryMessage({
   roomType,
   mealPlan,
   message,
-}) {
+}, resort = { name: `${RESORT.name}, ${RESORT.city}` }) {
   const lines = [
-    `Hi ${BUSINESS.name}, I would like to enquire about ${RESORT.name}, ${RESORT.city}.`,
+    `Hi ${BUSINESS.name}, I would like to enquire about ${resort ? resort.name : "resort stays and packages in Dandeli or Wayanad"}.`,
     "",
   ];
   if (name)     lines.push(`Name: ${name}`);
@@ -40,6 +40,11 @@ export function detailedEnquiryMessage({
   if (children !== undefined && children !== "") lines.push(`Children: ${children}`);
   if (roomType) lines.push(`Room Type: ${roomType}`);
   if (mealPlan) lines.push(`Meal Plan: ${mealPlan}`);
+  if (resort?.package) {
+    lines.push(`Package: ${resort.package.duration || resort.package.positioning}`);
+    if (resort.package.tariffs) lines.push("Please share available cottage and sharing options.");
+    else lines.push(`Category: ${resort.package.category}`);
+  }
   if (message)  lines.push(`Notes: ${message}`);
   lines.push("", "Please share the latest availability and final price.");
   return lines.join("\n");

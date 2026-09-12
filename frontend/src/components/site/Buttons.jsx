@@ -1,5 +1,7 @@
+import { useId } from "react";
 import { MessageCircle, Phone, ArrowUpRight } from "lucide-react";
-import { openWhatsApp, telLink, generalEnquiryMessage } from "../../lib/whatsapp";
+import { openWhatsApp, telLink, waLink } from "../../lib/whatsapp";
+import { useEnquiryContext } from "../../hooks/useEnquiryContext";
 
 /**
  * Filled premium button with a sliding hover fill (color animation on a
@@ -46,33 +48,36 @@ export function GhostButton({ children, onClick, href, as, className = "", testI
   );
 }
 
-export function WhatsAppButton({ message, className = "", label = "WhatsApp Enquiry", testId = "whatsapp-enquiry-button", variant = "primary" }) {
-  const msg = message || generalEnquiryMessage();
+export function WhatsAppButton({ message, className = "", label = "WhatsApp Enquiry", testId, variant = "primary" }) {
+  const id = useId().replace(/:/g, "");
+  const context = useEnquiryContext();
+  const msg = message || context.message;
   const onClick = (e) => { e.preventDefault(); openWhatsApp(msg); };
   const base = variant === "ghost"
     ? "border border-[#0A170F]/20 bg-transparent text-[#0A170F] hover:bg-[#0A170F] hover:text-[#F7F5F0]"
     : "bg-[#25D366] text-[#0A170F] hover:bg-[#1ebe58]";
   return (
     <a
-      href="#"
+      href={waLink(msg)}
       onClick={onClick}
-      data-testid={testId}
-      className={`group inline-flex items-center gap-3 rounded-full px-7 py-4 text-sm uppercase tracking-[0.18em] transition-colors duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366]/60 ${base} ${className}`}
+      data-testid={testId || `whatsapp-enquiry-button-${id}`}
+      className={`group inline-flex max-w-full items-center justify-center gap-2 rounded-full px-6 py-4 text-[11px] uppercase tracking-[0.14em] transition-colors duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366]/60 ${base} ${className}`}
     >
-      <MessageCircle className="h-4 w-4" />
+      <MessageCircle className="h-4 w-4 shrink-0" />
       <span>{label}</span>
     </a>
   );
 }
 
-export function CallButton({ className = "", label = "Call Now", testId = "call-now-button", variant = "ghost" }) {
+export function CallButton({ className = "", label = "Call Now", testId, variant = "ghost" }) {
+  const id = useId().replace(/:/g, "");
   const base = variant === "primary"
     ? "bg-[#F7F5F0] text-[#0A170F] hover:bg-[#e6e0d1]"
     : "border border-[#F7F5F0]/40 text-[#F7F5F0] hover:bg-[#F7F5F0] hover:text-[#0A170F]";
   return (
     <a
       href={telLink()}
-      data-testid={testId}
+      data-testid={testId || `call-now-button-${id}`}
       className={`group inline-flex items-center gap-3 rounded-full px-7 py-4 text-sm uppercase tracking-[0.18em] transition-colors duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F7F5F0]/40 ${base} ${className}`}
     >
       <Phone className="h-4 w-4" />

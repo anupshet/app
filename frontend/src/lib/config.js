@@ -21,6 +21,9 @@ export const BUSINESS = {
 
 // Prominent, Google-Ads-compliant disclaimer shown across the site.
 export const DISCLAIMER =
+  "Destina Tours and Travels is an independent travel and booking assistance business. This is not the official website of any listed resort, including Nature Mist – Dandeli and Land's End Resort & Spa.";
+
+export const LANDS_END_DISCLAIMER =
   "Destina Tours and Travels is an independent travel and booking assistance business. This is not the official website of Land's End Resort & Spa.";
 
 export const PRICING_NOTE = "Prices and availability are subject to confirmation.";

@@ -1,9 +1,10 @@
-import { useEffect } from "react";
+import { useMemo } from "react";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { MapPin, Clock, Users, ArrowUpRight, ShieldCheck } from "lucide-react";
-import { IMAGES, GALLERY, ROOMS, MEAL_PLANS, RESORT, FAQS, DISCLAIMER } from "../lib/config";
-import { openWhatsApp, generalEnquiryMessage } from "../lib/whatsapp";
+import { IMAGES, GALLERY, ROOMS, MEAL_PLANS, RESORT, FAQS, LANDS_END_DISCLAIMER as DISCLAIMER } from "../lib/config";
+import { openWhatsApp } from "../lib/whatsapp";
+import { useSEO } from "../hooks/useSEO";
 import { RevealText, FadeIn } from "../components/site/RevealText";
 import { WhatsAppButton, CallButton } from "../components/site/Buttons";
 import ImageCrop from "../components/site/ImageCrop";
@@ -13,16 +14,6 @@ import { resortLodgingLd, resortBreadcrumbLd, faqLd } from "../lib/schema";
 import {
   Accordion, AccordionContent, AccordionItem, AccordionTrigger
 } from "../components/ui/accordion";
-
-function useSEO() {
-  useEffect(() => {
-    document.title = "Land's End Resort Wayanad Booking | Destina Tours and Travels";
-    const meta = document.querySelector('meta[name="description"]') || document.createElement("meta");
-    meta.setAttribute("name", "description");
-    meta.setAttribute("content", "Plan your Wayanad getaway at Land's End Resort & Spa. Enquire about room options, stay plans, availability, and booking assistance through Destina Tours and Travels.");
-    if (!meta.parentNode) document.head.appendChild(meta);
-  }, []);
-}
 
 function ResortHero() {
   const ref = useRef(null);
@@ -291,10 +282,11 @@ function Faq() {
 }
 
 export default function Resort() {
-  useSEO();
+  useSEO("Land's End Resort Wayanad Booking | Destina Tours and Travels", "Plan your Wayanad getaway at Land's End Resort & Spa. Enquire about room options, stay plans, availability, and booking assistance through Destina Tours and Travels.", { image: IMAGES.valley });
+  const faqs = useMemo(() => faqLd(FAQS), []);
   useJsonLd("resort-lodging", resortLodgingLd);
   useJsonLd("resort-breadcrumb", resortBreadcrumbLd);
-  useJsonLd("resort-faq", faqLd(FAQS));
+  useJsonLd("resort-faq", faqs);
   return (
     <main data-testid="resort-page">
       <ResortHero />

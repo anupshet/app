@@ -1,11 +1,11 @@
 import Marquee from "react-fast-marquee";
 
 const DEFAULT = [
-  "The Sanctuary of Wayanad",
+  "Discover Dandeli",
   "Destina Tours & Travels",
   "Unplug · Reconnect · Breathe",
-  "Land's End Resort & Spa",
-  "Infinity Pool · Valley Views · Bamboo Café",
+  "Explore Wayanad",
+  "Stay · Explore · Unwind",
 ];
 
 export default function EditorialMarquee({ words = DEFAULT, testId = "editorial-marquee" }) {
