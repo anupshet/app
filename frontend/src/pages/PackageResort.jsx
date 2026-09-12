@@ -10,6 +10,7 @@ import { formatPrice } from "../lib/destinations";
 import { faqLd, packageResortLd } from "../lib/schema";
 import { useSEO } from "../hooks/useSEO";
 import { useJsonLd } from "../hooks/useJsonLd";
+import CheckAvailability from "../components/site/CheckAvailability";
 
 export default function PackageResort({ resort }) {
   useSEO(resort.seoTitle, resort.seoDescription, { image: resort.gallery[0].src });
@@ -28,6 +29,7 @@ export default function PackageResort({ resort }) {
         <WhatsAppButton label="Check Availability" message={resort.enquiryMessage} testId={`${resort.id}-hero-availability`} className="!bg-[#F7F5F0] hover:!bg-[#e6dfd0]" />
         <WhatsAppButton message={resort.enquiryMessage} testId={`${resort.id}-hero-whatsapp`} />
       </DestinationHero>
+      <CheckAvailability testId={`${resort.id}-check-availability`} resort={resort} />
       <DisclaimerStrip testId={`${resort.id}-disclaimer`} />
       <div className="mx-auto flex max-w-[1400px] flex-wrap items-center gap-3 px-6 py-8 text-xs lg:px-10" data-testid={`${resort.id}-breadcrumb`}>
         <Link to="/" data-testid={`${resort.id}-breadcrumb-home`} className="hover:underline">Home</Link><span>/</span><Link to={`/${resort.destinationId}`} data-testid={`${resort.id}-breadcrumb-destination`} className="hover:underline">{resort.city} Resorts</Link><span>/</span><span aria-current="page">{resort.name}</span>

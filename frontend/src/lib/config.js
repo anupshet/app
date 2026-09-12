@@ -19,12 +19,15 @@ export const BUSINESS = {
   hours: "Monday to Sunday · 9:00 AM – 9:00 PM",
 };
 
-// Prominent, Google-Ads-compliant disclaimer shown across the site.
+// Short page-level business disclosure.
 export const DISCLAIMER =
-  "Destina Tours and Travels is an independent travel and booking assistance business. This is not the official website of any listed resort, including Nature Mist – Dandeli and Land's End Resort & Spa.";
+  "Destina Tours and Travels is an independent travel and booking assistance business.";
 
-export const LANDS_END_DISCLAIMER =
-  "Destina Tours and Travels is an independent travel and booking assistance business. This is not the official website of Land's End Resort & Spa.";
+export const LANDS_END_DISCLAIMER = DISCLAIMER;
+
+// Footer disclosure remains intentionally detailed for advertising compliance.
+export const FOOTER_DISCLAIMER =
+  "Destina Tours and Travels is an independent travel and booking assistance business. This is not the official website of any listed resort, including Nature Mist – Dandeli and Land's End Resort & Spa.";
 
 export const PRICING_NOTE = "Prices and availability are subject to confirmation.";
 

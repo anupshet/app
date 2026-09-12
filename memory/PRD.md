@@ -86,7 +86,7 @@ Frontend-only React SPA (react-router-dom v7), Tailwind, Framer Motion, Lenis, e
 - `src/pages/PackageResort.jsx`: shared package-resort detail template using only provided resort data.
 - `src/pages/Packages.jsx`: packages grouped by destination, only approved offers.
 - `src/pages/Resort.jsx`: preserved Land's End page; only SEO hook/disclaimer alias and FAQ memoization updated.
-- `src/components/site/`: Header, DestinationNav, Footer, DestinationHero, DestinationUI, PackageCard, ResortCard, ResortDetailSections, DandeliExperience, WhyDestina, Buttons, EnquiryForm, sticky CTAs and retained existing motion components.
+- `src/components/site/`: Header, DestinationNav, Footer, DestinationHero, DestinationUI, PackageCard, ResortCard, ResortDetailSections, DandeliExperience, WhyDestina, Buttons, EnquiryForm, CheckAvailability, sticky CTAs and retained existing motion components.
 - `src/App.js`: destination and package resort routes derive from catalogue; legacy URL redirects; route/hash scrolling.
 - `public/sitemap.xml`: 13 canonical URLs, five images for each of the three Dandeli resorts and retained Wayanad imagery. Homepage image remains Fortune Woods aerial photo.
 - `public/robots.txt`: retained sitemap configuration.
@@ -133,7 +133,7 @@ The pool photo is the hero; the four remaining images form the detail gallery. A
 
 ## Prioritised Next Actions
 - **P0: None** — all reported expansion issues corrected and verified.
-- **P1:** User review of Mantra, its second position in the lists, and the Fortune Woods displayed starting-rate qualification.
+- **P1:** User review of the new above-the-fold Check Availability form, including its resort-aware WhatsApp messages.
 - **P2:** No fourth Dandeli resort requested or created. Only add further resorts when explicitly requested with supplied facts/photos.
 - **P2:** Add genuine guest testimonials once collected (never fabricate reviews).
 - **P2:** Optional conversion measurement for WhatsApp/phone enquiries, only if requested.
@@ -250,3 +250,21 @@ All five appear on Mantra's page, using the unchanged gallery component. No imag
 - Responsive checks passed at 320/390/768/1920, without horizontal overflow or blocking errors.
 - Follow-up self-test fixed and verified the scroll-container advisory on fresh Mantra and homepage loads: root relative, fixed header remains at viewport top, no overflow, warning absent. Log: `/root/.emergent/automation_output/20260912_183617/console_20260912_183617.log`.
 - No outstanding defects, mocked app integrations, authentication/credential changes or real WhatsApp messages sent.
+
+## Latest Increment — Above-Hero Availability Enquiry (2026-09-12)
+### User Requirements
+- Add an enquiry block named **Check Availability** directly after the hero.
+- Replace the long official-site sentence in page-top disclosures with: **“Destina Tours and Travels is an independent travel and booking assistance business.”**
+- Preserve the full existing footer disclaimer.
+
+### Implemented
+- Created reusable `CheckAvailability` and placed it immediately after the hero across Home, Dandeli/Wayanad destinations, Dandeli resort details, Packages, About, Contact and Land's End.
+- The section collects travel dates and guests, then opens genuine pre-filled WhatsApp enquiries. Resort pages automatically attach their specific resort name.
+- Moved Land's End's lower enquiry experience to the new placement and removed Contact's redundant second form.
+- Page-top notices now use the requested short wording; the detailed Google Ads footer notice remains unchanged.
+
+### Verification — PASS
+- `yarn build` compiled successfully.
+- Desktop smoke test confirmed the homepage block, the short top notice and unchanged detailed footer notice.
+- Browser regression passed on Home, Dandeli, Mantra, Packages, About, Contact and Land's End: every key hero page shows Check Availability and its short disclosure.
+- Mobile Mantra form test generated the correct resort-specific `wa.me` enquiry to +917019540319; no real message was sent.

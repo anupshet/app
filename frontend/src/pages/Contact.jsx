@@ -1,10 +1,10 @@
 import { RevealText } from "../components/site/RevealText";
-import EnquiryForm from "../components/site/EnquiryForm";
 import { WhatsAppButton, CallButton } from "../components/site/Buttons";
 import { BUSINESS, DISCLAIMER } from "../lib/config";
 import { Mail, MessageCircle, Phone, MapPin, Clock, ShieldCheck } from "lucide-react";
 import { useSEO } from "../hooks/useSEO";
 import { IMAGES } from "../lib/config";
+import CheckAvailability from "../components/site/CheckAvailability";
 
 export default function Contact() {
   useSEO(
@@ -23,6 +23,8 @@ export default function Contact() {
         </div>
       </section>
 
+      <CheckAvailability testId="contact-check-availability" destinationMode />
+
       {/* Disclaimer */}
       <div className="bg-[#2C402B] text-[#F7F5F0]" data-testid="contact-disclaimer">
         <div className="mx-auto flex max-w-[1400px] items-center gap-3 px-6 py-3 lg:px-10">
@@ -33,7 +35,7 @@ export default function Contact() {
 
       <section className="bg-[#F7F5F0] py-24 md:py-32">
         <div className="mx-auto grid max-w-[1400px] gap-14 px-6 md:grid-cols-12 lg:px-10">
-          <div className="md:col-span-5">
+          <div className="md:col-span-7">
             <p className="text-[10px] uppercase tracking-[0.32em] text-[#0A170F]/60">Direct lines</p>
             <h2 className="mt-4 font-serif text-4xl leading-[1] tracking-tight text-[#0A170F] md:text-5xl">
               Reach {BUSINESS.name}
@@ -50,21 +52,6 @@ export default function Contact() {
             <div className="mt-10 flex flex-wrap gap-3">
               <WhatsAppButton />
               <CallButton variant="primary" className="!bg-[#0A170F] !text-[#F7F5F0] hover:!bg-[#2C402B]" />
-            </div>
-          </div>
-
-          <div className="md:col-span-7">
-            <div className="border border-[#0A170F]/10 bg-white p-8 md:p-12">
-              <p className="text-[10px] uppercase tracking-[0.32em] text-[#0A170F]/60">Enquiry Form</p>
-              <h3 className="mt-2 font-serif text-3xl leading-tight text-[#0A170F] md:text-4xl">
-                Tell us about your stay.
-              </h3>
-              <p className="mt-3 max-w-lg text-sm leading-relaxed text-[#0A170F]/60">
-                Submitting opens WhatsApp with your enquiry pre-filled. Prices and availability are subject to confirmation.
-              </p>
-              <div className="mt-8">
-                <EnquiryForm destinationMode />
-              </div>
             </div>
           </div>
         </div>

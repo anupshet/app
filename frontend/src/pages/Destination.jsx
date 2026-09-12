@@ -2,6 +2,7 @@ import { DestinationHero } from "../components/site/DestinationHero";
 import { SectionHeading, RouteButton, DisclaimerStrip, BookingCTA } from "../components/site/DestinationUI";
 import { ResortCard } from "../components/site/ResortCard";
 import { useSEO } from "../hooks/useSEO";
+import CheckAvailability from "../components/site/CheckAvailability";
 
 export default function Destination({ destination }) {
   useSEO(destination.seoTitle, destination.seoDescription, { image: destination.image.src });
@@ -11,6 +12,7 @@ export default function Destination({ destination }) {
         <RouteButton to={`#${destination.id}-resorts`} light testId={`${destination.id}-view-resorts`}>Explore Resorts</RouteButton>
         {destination.resorts.some((resort) => resort.package) && <RouteButton to={`/packages#${destination.id}`} light testId={`${destination.id}-view-packages`}>View Packages</RouteButton>}
       </DestinationHero>
+      <CheckAvailability testId={`${destination.id}-check-availability`} destinationMode />
       <DisclaimerStrip testId={`${destination.id}-disclaimer`} />
       {destination.experiences && <div className="border-b border-[#0A170F]/10 bg-[#F7F5F0]" data-testid={`${destination.id}-experiences`}><ul className="mx-auto flex max-w-[1400px] flex-wrap gap-x-10 gap-y-4 px-6 py-8 lg:px-10">{destination.experiences.map((item, index) => <li key={item} className="text-xs text-[#0A170F]/75" data-testid={`${destination.id}-experience-label-${index}`}>{item}</li>)}</ul></div>}
       <section id={`${destination.id}-resorts`} className="bg-[#F7F5F0] py-20 md:py-28" data-testid={`${destination.id}-available-resorts`}>

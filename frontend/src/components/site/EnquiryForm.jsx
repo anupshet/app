@@ -14,10 +14,10 @@ const initial = {
   message: "",
 };
 
-export default function EnquiryForm({ compact = false, testId = "enquiry-form", destinationMode = false }) {
+export default function EnquiryForm({ compact = false, testId = "enquiry-form", destinationMode = false, resort = null }) {
   const [form, setForm] = useState(initial);
   const [errors, setErrors] = useState({});
-  const selectedResort = destinationMode ? ALL_RESORTS.find((resort) => resort.id === form.resortId) || null : LANDS_END;
+  const selectedResort = destinationMode ? ALL_RESORTS.find((item) => item.id === form.resortId) || null : resort || LANDS_END;
   const showRoomPlans = selectedResort?.id === LANDS_END.id;
 
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));

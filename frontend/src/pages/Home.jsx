@@ -6,6 +6,7 @@ import { PackageCard } from "../components/site/PackageCard";
 import { ResortCard } from "../components/site/ResortCard";
 import { WhyDestina } from "../components/site/WhyDestina";
 import { DandeliExperience } from "../components/site/DandeliExperience";
+import CheckAvailability from "../components/site/CheckAvailability";
 import { useSEO } from "../hooks/useSEO";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
         <RouteButton to="/dandeli" light testId="hero-explore-dandeli">Explore Dandeli Resorts</RouteButton>
         <RouteButton to="/packages#dandeli" light testId="hero-dandeli-packages">View Dandeli Packages</RouteButton>
       </DestinationHero>
+      <CheckAvailability testId="home-check-availability" destinationMode />
       <DisclaimerStrip />
       <section className="bg-[#F7F5F0] py-20 md:py-28" data-testid="popular-dandeli-packages">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">

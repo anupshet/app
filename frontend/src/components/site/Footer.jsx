@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, MessageCircle, Phone, MapPin } from "lucide-react";
-import { BUSINESS, DISCLAIMER } from "../../lib/config";
+import { BUSINESS, FOOTER_DISCLAIMER } from "../../lib/config";
 import { DESTINATIONS } from "../../lib/destinations";
 import { openWhatsApp, waLink, telLink } from "../../lib/whatsapp";
 import { useEnquiryContext } from "../../hooks/useEnquiryContext";
@@ -50,7 +50,7 @@ export default function Footer() {
         </div>
         <div className="mt-16 flex flex-col justify-between gap-6 border-t border-[#F7F5F0]/15 py-8 text-xs text-[#F7F5F0]/65 md:flex-row">
           <p data-testid="footer-copyright">© {new Date().getFullYear()} {BUSINESS.legalName}.<br /><span className="mt-2 inline-block">Independent travel &amp; resort booking assistance.</span></p>
-          <p className="max-w-xl text-[11px] leading-relaxed" data-testid="footer-disclaimer">{DISCLAIMER}</p>
+          <p className="max-w-xl text-[11px] leading-relaxed" data-testid="footer-disclaimer">{FOOTER_DISCLAIMER}</p>
         </div>
       </div>
     </footer>

@@ -3,6 +3,7 @@ import { DestinationHero } from "../components/site/DestinationHero";
 import { SectionHeading, RouteButton, DisclaimerStrip, BookingCTA } from "../components/site/DestinationUI";
 import { PackageCard } from "../components/site/PackageCard";
 import { useSEO } from "../hooks/useSEO";
+import CheckAvailability from "../components/site/CheckAvailability";
 
 export default function Packages() {
   useSEO("Resort Packages in Dandeli & Wayanad | Destina Tours & Travels", "View the Nature Mist Dandeli 1 Night / 1 Day package at ₹1,500 per person, and explore Wayanad stay options. Contact Destina for availability and booking assistance.", { image: NATURE_MIST.gallery[0].src });
@@ -11,6 +12,7 @@ export default function Packages() {
       <DestinationHero testId="packages-hero" image={NATURE_MIST.gallery[0]} eyebrow="Destina Tours & Travels · Curated stays" lines={["Stay. Explore.", "Make it your own."]} description="Selected resort packages, with personalized booking assistance and clear pricing information.">
         <RouteButton to="#dandeli" light testId="packages-browse-dandeli">Dandeli Packages</RouteButton>
       </DestinationHero>
+      <CheckAvailability testId="packages-check-availability" destinationMode />
       <DisclaimerStrip testId="packages-disclaimer" />
       {DESTINATIONS.filter((destination) => destination.resorts.some((resort) => resort.package)).map((destination) => (
         <section key={destination.id} id={destination.id} className="bg-[#F7F5F0] py-20 md:py-28" data-testid={`packages-${destination.id}`}>

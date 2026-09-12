@@ -5,6 +5,7 @@ import { WhatsAppButton, CallButton } from "../components/site/Buttons";
 import { useSEO } from "../hooks/useSEO";
 import { Link } from "react-router-dom";
 import { Check, ShieldCheck } from "lucide-react";
+import CheckAvailability from "../components/site/CheckAvailability";
 
 const WHAT_WE_DO = [
   "Resort availability enquiries",
@@ -41,6 +42,8 @@ export default function About() {
           />
         </div>
       </section>
+
+      <CheckAvailability testId="about-check-availability" destinationMode />
 
       {/* Disclaimer */}
       <div className="bg-[#2C402B] text-[#F7F5F0]" data-testid="about-disclaimer">

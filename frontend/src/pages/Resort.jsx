@@ -8,9 +8,10 @@ import { useSEO } from "../hooks/useSEO";
 import { RevealText, FadeIn } from "../components/site/RevealText";
 import { WhatsAppButton, CallButton } from "../components/site/Buttons";
 import ImageCrop from "../components/site/ImageCrop";
-import EnquiryForm from "../components/site/EnquiryForm";
+import CheckAvailability from "../components/site/CheckAvailability";
 import { useJsonLd } from "../hooks/useJsonLd";
 import { resortLodgingLd, resortBreadcrumbLd, faqLd } from "../lib/schema";
+import { LANDS_END } from "../lib/destinations";
 import {
   Accordion, AccordionContent, AccordionItem, AccordionTrigger
 } from "../components/ui/accordion";
@@ -233,31 +234,6 @@ function Plans() {
   );
 }
 
-function Enquiry() {
-  return (
-    <section id="enquiry" className="bg-[#0A170F] py-24 text-[#F7F5F0] md:py-32">
-      <div className="mx-auto grid max-w-[1400px] gap-14 px-6 md:grid-cols-12 lg:px-10">
-        <div className="md:col-span-5">
-          <p className="text-[10px] uppercase tracking-[0.32em] text-[#F7F5F0]/60">05 · Enquire</p>
-          <h2 className="mt-4 font-serif text-5xl leading-[0.95] tracking-tight md:text-7xl">Send us your travel notes.</h2>
-          <p className="mt-6 max-w-md text-sm leading-relaxed text-[#F7F5F0]/75">
-            We check availability with the resort and revert with the latest available price for your dates.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <WhatsAppButton testId="resort-side-whatsapp" />
-            <CallButton />
-          </div>
-        </div>
-        <div className="md:col-span-7">
-          <div className="bg-[#F7F5F0] p-8 text-[#0A170F] md:p-12">
-            <EnquiryForm />
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function Faq() {
   return (
     <section className="bg-[#F7F5F0] py-24 md:py-32">
@@ -290,6 +266,7 @@ export default function Resort() {
   return (
     <main data-testid="resort-page">
       <ResortHero />
+      <CheckAvailability testId="resort-check-availability" resort={LANDS_END} />
       <div className="bg-[#2C402B] text-[#F7F5F0]" data-testid="resort-disclaimer">
         <div className="mx-auto flex max-w-[1400px] items-center gap-3 px-6 py-3 lg:px-10">
           <ShieldCheck className="h-4 w-4 shrink-0 text-[#D4CBBF]" />
@@ -300,7 +277,6 @@ export default function Resort() {
       <ResortGallery />
       <Rooms />
       <Plans />
-      <Enquiry />
       <Faq />
     </main>
   );
