@@ -1,4 +1,5 @@
 import { BUSINESS, RESORT, digitsOnly } from "./config";
+import { reportContactConversion } from "./adsConversion";
 
 /**
  * Build a wa.me URL with a properly URL-encoded message.
@@ -52,6 +53,14 @@ export function detailedEnquiryMessage({
 
 export function openWhatsApp(message) {
   const url = waLink(message);
+  reportContactConversion();
   if (typeof window !== "undefined") window.open(url, "_blank", "noopener,noreferrer");
+  return url;
+}
+
+export function openCall() {
+  const url = telLink();
+  if (typeof window === "undefined") return url;
+  reportContactConversion(() => window.location.assign(url));
   return url;
 }

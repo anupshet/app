@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { MessageCircle, Phone } from "lucide-react";
-import { openWhatsApp, telLink } from "../../lib/whatsapp";
+import { openCall, openWhatsApp, telLink } from "../../lib/whatsapp";
 import { useEnquiryContext } from "../../hooks/useEnquiryContext";
 import { BUSINESS } from "../../lib/config";
 
@@ -52,6 +52,7 @@ export default function DesktopStickyCTA() {
             </button>
             <a
               href={telLink()}
+              onClick={(event) => { event.preventDefault(); openCall(); }}
               tabIndex={hidden ? -1 : 0}
               data-testid="sticky-call"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0A170F] py-3 text-[11px] uppercase tracking-[0.2em] text-[#F7F5F0] transition-colors duration-500 hover:bg-[#2C402B]"

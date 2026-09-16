@@ -1,5 +1,5 @@
 import { MessageCircle, Phone } from "lucide-react";
-import { openWhatsApp, telLink } from "../../lib/whatsapp";
+import { openCall, openWhatsApp, telLink } from "../../lib/whatsapp";
 import { useEnquiryContext } from "../../hooks/useEnquiryContext";
 
 export default function MobileBottomCTA() {
@@ -20,6 +20,7 @@ export default function MobileBottomCTA() {
         </button>
         <a
           href={telLink()}
+          onClick={(event) => { event.preventDefault(); openCall(); }}
           data-testid="mobile-cta-call"
           className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[#0A170F] py-3 text-xs uppercase tracking-[0.18em] text-[#F7F5F0]"
         >

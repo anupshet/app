@@ -77,7 +77,8 @@ Frontend-only React SPA (react-router-dom v7), Tailwind, Framer Motion, Lenis, e
 - `src/lib/destinations.js`: `NATURE_MIST`, `LANDS_END` listing reference, `DESTINATIONS`, derived `ALL_RESORTS` / `PACKAGE_RESORTS`; approved content, gallery, package, activity groups, FAQs, SEO and enquiry messages.
 - `src/lib/fortuneWoods.js`: second Dandeli resort's supplied facts, five exact originals, six cottage/sharing tariffs, meals, activities, metadata and WhatsApp messages. Imported into Dandeli `resorts` after Nature Mist.
 - `src/lib/mantra.js`: Mantra supplied data and five original JPEGs. Current Dandeli order is **Nature Mist → Mantra → Fortune Woods**; all menus/listings derive this order.
-- `src/lib/whatsapp.js`: URL construction and general/detailed enquiries.
+- `src/lib/whatsapp.js`: URL construction, general/detailed enquiries and tracked WhatsApp/call launch helpers.
+- `src/lib/adsConversion.js`: Google Ads click-conversion reporting for contact actions.
 - `src/hooks/useEnquiryContext.js`: route-aware resort message for shared CTAs.
 - `src/hooks/useSEO.js`: route-specific title/description/canonical/OpenGraph/Twitter metadata.
 - `src/lib/schema.js`: TravelAgency (Dandeli + Wayanad), website, preserved Land's End schema/breadcrumb/FAQ, reusable per-person package resort schema.
@@ -90,7 +91,7 @@ Frontend-only React SPA (react-router-dom v7), Tailwind, Framer Motion, Lenis, e
 - `src/App.js`: destination and package resort routes derive from catalogue; legacy URL redirects; route/hash scrolling.
 - `public/sitemap.xml`: 13 canonical URLs, five images for each of the three Dandeli resorts and retained Wayanad imagery. Homepage image remains Fortune Woods aerial photo.
 - `public/robots.txt`: retained sitemap configuration.
-- `public/index.html`: multi-destination default SEO/OG tags; existing Search Console verification retained.
+- `public/index.html`: multi-destination default SEO/OG tags, Search Console verification and the page-wide Google Ads tag.
 
 ### Adding Future Dandeli Resorts
 1. Obtain actual approved resort details and images from the user; never generate placeholders or assume amenities/rates.
@@ -136,7 +137,7 @@ The pool photo is the hero; the four remaining images form the detail gallery. A
 - **P1:** User review of the new above-the-fold Check Availability form, including its resort-aware WhatsApp messages.
 - **P2:** No fourth Dandeli resort requested or created. Only add further resorts when explicitly requested with supplied facts/photos.
 - **P2:** Add genuine guest testimonials once collected (never fabricate reviews).
-- **P2:** Optional conversion measurement for WhatsApp/phone enquiries, only if requested.
+- **P1:** Review Google Ads conversion diagnostics after the published site receives real WhatsApp or call clicks.
 
 ## Constraints for Future Work
 - Preserve frontend-only architecture and configured contact number.
@@ -268,3 +269,14 @@ All five appear on Mantra's page, using the unchanged gallery component. No imag
 - Desktop smoke test confirmed the homepage block, the short top notice and unchanged detailed footer notice.
 - Browser regression passed on Home, Dandeli, Mantra, Packages, About, Contact and Land's End: every key hero page shows Check Availability and its short disclosure.
 - Mobile Mantra form test generated the correct resort-specific `wa.me` enquiry to +917019540319; no real message was sent.
+
+## Latest Increment — Google Ads Contact Conversion Tracking (2026-09-16)
+### Implemented
+- Installed the Google tag once in `public/index.html` for Google Ads ID `AW-18349153988`.
+- Added the provided conversion destination `AW-18349153988/-9x_CNPtldkcEMS9x61E` to every genuine WhatsApp and telephone CTA through shared contact helpers.
+- Covered shared buttons, header, drawer, footer, mobile bottom bar, desktop sticky card, availability forms and individual room enquiry buttons. WhatsApp opens normally; phone calls wait briefly for the conversion request and still proceed if the tag is blocked.
+
+### Verification — PASS
+- `yarn build` compiled successfully.
+- Browser test confirmed exactly one global Google tag, plus one conversion event for a WhatsApp click and one for a call click, each using the supplied conversion destination.
+- No PII is sent with Google Ads events and no live WhatsApp messages or phone calls were placed during verification.

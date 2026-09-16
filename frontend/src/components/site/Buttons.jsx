@@ -1,6 +1,6 @@
 import { useId } from "react";
 import { MessageCircle, Phone, ArrowUpRight } from "lucide-react";
-import { openWhatsApp, telLink, waLink } from "../../lib/whatsapp";
+import { openCall, openWhatsApp, telLink, waLink } from "../../lib/whatsapp";
 import { useEnquiryContext } from "../../hooks/useEnquiryContext";
 
 /**
@@ -77,6 +77,7 @@ export function CallButton({ className = "", label = "Call Now", testId, variant
   return (
     <a
       href={telLink()}
+      onClick={(event) => { event.preventDefault(); openCall(); }}
       data-testid={testId || `call-now-button-${id}`}
       className={`group inline-flex items-center gap-3 rounded-full px-7 py-4 text-sm uppercase tracking-[0.18em] transition-colors duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F7F5F0]/40 ${base} ${className}`}
     >

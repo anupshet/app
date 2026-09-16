@@ -4,7 +4,7 @@ import { Menu, X, MessageCircle, Phone } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { BUSINESS } from "../../lib/config";
 import { DESTINATIONS } from "../../lib/destinations";
-import { openWhatsApp, waLink, telLink } from "../../lib/whatsapp";
+import { openCall, openWhatsApp, waLink, telLink } from "../../lib/whatsapp";
 import { useEnquiryContext } from "../../hooks/useEnquiryContext";
 import { DestinationNav } from "./DestinationNav";
 
@@ -46,7 +46,7 @@ export default function Header() {
         </nav>
         <a href={waLink(message)} onClick={(e) => { e.preventDefault(); openWhatsApp(message); }} data-testid="header-whatsapp-cta" className="hidden shrink-0 items-center gap-2 rounded-full bg-[#2C402B] px-5 py-3 text-[10px] uppercase tracking-[0.1em] text-[#F7F5F0] transition-colors hover:bg-[#1e2e1e] xl:inline-flex"><MessageCircle className="h-3.5 w-3.5" />WhatsApp Enquiry</a>
         <div className="flex gap-2 xl:hidden">
-          <a href={telLink()} data-testid="header-mobile-call" aria-label="Call now" className="grid h-10 w-10 place-items-center rounded-full border border-current/30"><Phone className="h-4 w-4" /></a>
+          <a href={telLink()} onClick={(event) => { event.preventDefault(); openCall(); }} data-testid="header-mobile-call" aria-label="Call now" className="grid h-10 w-10 place-items-center rounded-full border border-current/30"><Phone className="h-4 w-4" /></a>
           <button aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(!open)} data-testid="header-menu-toggle" className="grid h-10 w-10 place-items-center rounded-full border border-current/30">{open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}</button>
         </div>
       </div>
@@ -56,7 +56,7 @@ export default function Header() {
           {DESTINATIONS.map((destination) => <DestinationNav key={destination.id} destination={destination} mobile expanded={expanded === destination.id} onToggle={() => setExpanded(expanded === destination.id ? null : destination.id)} onNavigate={() => setOpen(false)} />)}
           {NAV.map((item) => <NavLink key={item.id} to={item.to} data-testid={`mnav-${item.id}`} className="border-b border-[#0A170F]/10 py-4 font-serif text-2xl">{item.label}</NavLink>)}
           <a href={waLink(message)} onClick={(e) => { e.preventDefault(); openWhatsApp(message); }} data-testid="drawer-whatsapp-cta" className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-4 py-4 text-xs"><MessageCircle className="h-4 w-4" />WhatsApp Enquiry</a>
-          <a href={telLink()} data-testid="drawer-call-cta" className="mt-3 inline-flex items-center justify-center gap-2 rounded-full border border-[#0A170F]/30 px-4 py-4 text-xs"><Phone className="h-4 w-4" />Call {BUSINESS.phone}</a>
+          <a href={telLink()} onClick={(event) => { event.preventDefault(); openCall(); }} data-testid="drawer-call-cta" className="mt-3 inline-flex items-center justify-center gap-2 rounded-full border border-[#0A170F]/30 px-4 py-4 text-xs"><Phone className="h-4 w-4" />Call {BUSINESS.phone}</a>
         </nav>
       </motion.div>}</AnimatePresence>
     </header>
