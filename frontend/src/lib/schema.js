@@ -137,8 +137,8 @@ export function packageResortLd(resort) {
     makesOffer: resort.package.tariffs ? resort.package.tariffs.flatMap((cottage) => cottage.rates.map((rate) => ({
       "@type": "Offer", name: `${cottage.name} — ${rate.sharing} Sharing${rate.note ? ` (${rate.note})` : ""}`,
       price: rate.price, priceCurrency: "INR", url: `${SITE.url}${resort.path}`,
-      priceSpecification: { "@type": "UnitPriceSpecification", price: rate.price, priceCurrency: "INR", unitText: "person/night" },
-      description: "Per Person Per Night. Prices and availability are subject to confirmation.",
+      priceSpecification: { "@type": "UnitPriceSpecification", price: rate.price, priceCurrency: "INR", unitText: "person" },
+      description: "Per Person. Prices and availability are subject to confirmation.",
     }))) : {
       "@type": "Offer", name: [resort.package.duration ? `${resort.package.duration} Package` : resort.package.title, resort.package.category].filter(Boolean).join(" — "),
       price: resort.package.price, priceCurrency: "INR", url: `${SITE.url}${resort.path}`,

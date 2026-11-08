@@ -280,3 +280,27 @@ All five appear on Mantra's page, using the unchanged gallery component. No imag
 - `yarn build` compiled successfully.
 - Browser test confirmed exactly one global Google tag, plus one conversion event for a WhatsApp click and one for a call click, each using the supplied conversion destination.
 - No PII is sent with Google Ads events and no live WhatsApp messages or phone calls were placed during verification.
+
+## Latest Increment — Dandeli Multi-Duration Packages, Zoho SalesIQ, Privacy Update (2026-02)
+### User Requirements
+- Change the Dandeli package duration everywhere from "1 Night / 1 Day" to three selectable durations across all three Dandeli resorts (Nature Mist, Fortune Woods, Mantra): **1 Night / 2 Days**, **2 Nights / 3 Days**, **3 Nights / 4 Days**.
+- Pricing formula: 1N/2D = existing base price; 2N/3D = (base × 2) − ₹400; 3N/4D = (base × 3) − ₹400. Apply individually to every resort/cottage/sharing combination. Base tariffs unchanged.
+- Add a compact duration selector (default 1N/2D) above pricing on every Dandeli resort detail page; price updates immediately, no reload.
+- All three Dandeli resorts must show identical standard inclusions: **PACKAGE INCLUDES** — Stay, Food, River Activities, Nature Trek, Indoor & Outdoor Games, Campfire + Music — across all durations, on detail pages and homepage package cards. Resort-specific activities/cottage info and Wayanad/Land's End inclusions stay untouched.
+- WhatsApp enquiry buttons must dynamically reflect the selected resort, duration, price and (for Fortune Woods) cottage + sharing — reusing the existing WhatsApp number/integration.
+- Install Zoho SalesIQ live chat (`wc=siq58e3741d4dae2384ffa77badac1b2f58f52744a3a1f659e781cf58c336b19ce7`) site-wide, loaded once, without disturbing WhatsApp functionality.
+- Add a Zoho SalesIQ visitor-tracking/cookie disclosure section (with Zoho Privacy/Cookie Policy links) to the existing Privacy Policy page; no other legal pages/content changed.
+
+### Implemented
+- New shared helper `src/lib/dandeliPricing.js`: `DANDELI_DURATIONS`, `durationPrice(base, key)` formula, `DANDELI_INCLUSIONS`/`DANDELI_INCLUSIONS_TITLE` ("PACKAGE INCLUDES"), and `packageEnquiryMessage()` builder (resort, duration, price, optional cottage/sharing) reusing the existing `BUSINESS`/WhatsApp number — no new integration created.
+- `lib/destinations.js`, `lib/mantra.js`, `lib/fortuneWoods.js`: all three Dandeli `package` objects now carry `duration: "1 Night / 2 Days"`, `durations: DANDELI_DURATIONS`, and the standard `inclusionsTitle`/`inclusions`. Fortune Woods `unit`/`unitLabel`/`rateNote`/`cardRateNote` reworded from "per night" to "per person" package pricing. Stale "1 Night / 1 Day" / "per night" copy removed from enquiry messages, SEO descriptions and FAQs (Nature Mist, Mantra, Fortune Woods, `Packages.jsx`, `lib/schema.js`).
+- `components/site/ResortDetailSections.jsx` (`ResortPackageDetails`): added a `DurationSelector` (pill buttons, default 1N/2D, `useState`) rendered above pricing on every Dandeli resort page. Simple-price resorts (Nature Mist, Mantra) recompute the displayed price and the bottom "Check Availability" WhatsApp message live. Fortune Woods recomputes every cottage/sharing rate and adds a per-row dynamic "Enquire" WhatsApp button (resort, cottage, sharing, duration, price). No change needed in `PackageCard`, `ResortCard`, `PackageResort` hero, `schema.js` or `whatsapp.js` — they already read `package.duration`/`price` generically, so adding the fields to Mantra/Fortune Woods data automatically fixed their homepage/hero duration labels too.
+- `public/index.html`: added the exact Zoho SalesIQ snippet once, right before `</body>` (global CRA shell, loads on every route).
+- `pages/Policies.jsx`: added the "Website Visitor Tracking and Live Chat – Zoho SalesIQ" section (exact supplied disclosure + Zoho Privacy/Cookie Policy links) to the existing Privacy Policy; no other policy content changed. No pre-existing cookie-consent banner was found, so none needed updating.
+
+### Verification
+- `yarn build` / dev server compiled successfully, no new warnings.
+- Confirmed via curl: Zoho `zsiqscript` tag present exactly once in the served HTML.
+- Verified the duration-price formula in isolation for all 8 price points (Nature Mist, Fortune Woods × 2 cottages × 3 sharings, Mantra) — all match the exact values supplied by the user.
+- Screenshot verification: Fortune Woods hero/package section renders "1 Night / 2 Days" by default, the 3 duration pills, "PACKAGE INCLUDES" with all 6 standard items, and per-row "Enquire" buttons with per-person pricing.
+- Per explicit user instruction, this round was shipped **without** a full testing-subagent regression pass; a follow-up regression is recommended before relying on this for production traffic.
