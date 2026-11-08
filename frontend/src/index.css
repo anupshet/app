@@ -40,6 +40,14 @@ body {
     color: var(--bg);
 }
 
+/* Keep the Zoho SalesIQ chat launcher above the mobile WhatsApp/Call bar
+   (MobileBottomCTA) so the two never overlap on phones & tablets. */
+@media (max-width: 1023px) {
+    body .zsiq_floatmain {
+        bottom: calc(84px + env(safe-area-inset-bottom)) !important;
+    }
+}
+
 @layer base {
     :root {
         --background: 40 33% 96%;

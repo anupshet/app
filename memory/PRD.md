@@ -309,3 +309,7 @@ All five appear on Mantra's page, using the unchanged gallery component. No imag
 - Extracted the duration-pill UI into a shared `components/site/DurationSelector.jsx` (used by both the resort-detail pricing section and the homepage cards — no duplicated markup).
 - `components/site/PackageCard.jsx` (used in Home's "Popular Dandeli Packages" and the `/packages` page) now shows the same 1N/2D · 2N/3D · 3N/4D toggle; selecting a duration updates the card's price, duration label and the "Check Availability" WhatsApp message live, for all three Dandeli resorts.
 - `yarn build` compiled successfully; verified via code path reuse of the already-tested `durationPrice`/`packageEnquiryMessage` helpers.
+
+### Follow-up — Zoho Chat Launcher vs Mobile Bottom CTA Bar (2026-02)
+- Reported: the Zoho SalesIQ floating chat icon overlapped the mobile WhatsApp/Call bar (`MobileBottomCTA.jsx`).
+- Fix: added a scoped CSS rule in `index.css` (`body .zsiq_floatmain { bottom: calc(84px + env(safe-area-inset-bottom)) !important; }`) inside a `max-width: 1023px` media query — the same breakpoint `MobileBottomCTA` uses (`lg:hidden`) — so the Zoho launcher sits above the bar on phones/tablets without affecting its desktop bottom-right position. No changes to `MobileBottomCTA.jsx` itself or the Zoho script were needed.
