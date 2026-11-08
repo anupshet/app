@@ -6,29 +6,9 @@ import { durationPrice, packageEnquiryMessage } from "../../lib/dandeliPricing";
 import { FadeIn } from "./RevealText";
 import { WhatsAppButton } from "./Buttons";
 import { SectionHeading } from "./DestinationUI";
+import { DurationSelector } from "./DurationSelector";
 
 const ICONS = { Waves, Target, Flame };
-
-const DurationSelector = ({ resort, durations, selectedKey, onSelect }) => (
-  <div className="mb-7 flex flex-wrap gap-2" data-testid={`${resort.id}-duration-selector`}>
-    {durations.map((d) => (
-      <button
-        key={d.key}
-        type="button"
-        aria-pressed={selectedKey === d.key}
-        onClick={() => onSelect(d.key)}
-        data-testid={`${resort.id}-duration-${d.key}`}
-        className={`rounded-full border px-4 py-2.5 text-[11px] uppercase tracking-[0.12em] transition-colors duration-300 ${
-          selectedKey === d.key
-            ? "border-[#8B5A2B] bg-[#8B5A2B] text-[#F7F5F0]"
-            : "border-[#0A170F]/20 text-[#0A170F] hover:border-[#8B5A2B] hover:text-[#8B5A2B]"
-        }`}
-      >
-        {d.label}
-      </button>
-    ))}
-  </div>
-);
 
 export const ResortPhotoGallery = ({ resort }) => (
   <section className="bg-[#0A170F] py-20 text-[#F7F5F0] md:py-28" data-testid={`${resort.id}-gallery`}>
@@ -60,7 +40,7 @@ export const ResortPackageDetails = ({ resort }) => {
       <div className="grid gap-10 md:grid-cols-2">
         <div>
           <SectionHeading eyebrow="02 / Your package" title={pack.title || `${selectedDuration ? selectedDuration.label : pack.duration} Package`} testId={`${resort.id}-package-heading`} />
-          {hasDurations && <DurationSelector resort={resort} durations={pack.durations} selectedKey={durationKey} onSelect={setDurationKey} />}
+          {hasDurations && <DurationSelector resort={resort} durations={pack.durations} selectedKey={durationKey} onSelect={setDurationKey} className="mb-7" />}
           {pack.tariffs ? <>
             <p className="text-sm font-semibold text-[#8B5A2B]" data-testid={`${resort.id}-tariff-unit`}>{pack.unitLabel}</p>
             {pack.tariffs.map((cottage) => <div key={cottage.id} className="mt-8 border-t border-[#0A170F]/15 pt-6" data-testid={`${resort.id}-tariff-${cottage.id}`}>

@@ -304,3 +304,8 @@ All five appear on Mantra's page, using the unchanged gallery component. No imag
 - Verified the duration-price formula in isolation for all 8 price points (Nature Mist, Fortune Woods × 2 cottages × 3 sharings, Mantra) — all match the exact values supplied by the user.
 - Screenshot verification: Fortune Woods hero/package section renders "1 Night / 2 Days" by default, the 3 duration pills, "PACKAGE INCLUDES" with all 6 standard items, and per-row "Enquire" buttons with per-person pricing.
 - Per explicit user instruction, this round was shipped **without** a full testing-subagent regression pass; a follow-up regression is recommended before relying on this for production traffic.
+
+### Follow-up — Duration Toggle on Homepage Package Cards (2026-02)
+- Extracted the duration-pill UI into a shared `components/site/DurationSelector.jsx` (used by both the resort-detail pricing section and the homepage cards — no duplicated markup).
+- `components/site/PackageCard.jsx` (used in Home's "Popular Dandeli Packages" and the `/packages` page) now shows the same 1N/2D · 2N/3D · 3N/4D toggle; selecting a duration updates the card's price, duration label and the "Check Availability" WhatsApp message live, for all three Dandeli resorts.
+- `yarn build` compiled successfully; verified via code path reuse of the already-tested `durationPrice`/`packageEnquiryMessage` helpers.
