@@ -1,4 +1,6 @@
 // Exact supplied tariff, inclusions, activities and unmodified uploaded photos.
+import { DANDELI_DURATIONS, DANDELI_INCLUSIONS, DANDELI_INCLUSIONS_TITLE } from "./dandeliPricing";
+
 export const MANTRA = {
   id: "mantra", destinationId: "dandeli", path: "/dandeli/mantra",
   name: "Mantra – Dandeli", navName: "Mantra",
@@ -14,9 +16,10 @@ export const MANTRA = {
   ],
   highlights: ["Buffet Meals", "River Activities", "Nature Walk", "Swimming Pool", "Rain Dance", "Campfire", "Kids Play Area"],
   package: {
-    title: "Package details", price: 2200, unit: "person", unitLabel: "Per Person", exactPrice: true,
-    inclusionsTitle: "Package Inclusions",
-    inclusions: ["Buffet Lunch (Mix)", "Evening Tea/Coffee", "Buffet Dinner (Mix)", "Buffet Breakfast"],
+    title: "Package details", duration: "1 Night / 2 Days", durations: DANDELI_DURATIONS,
+    price: 2200, unit: "person", unitLabel: "Per Person", exactPrice: true,
+    inclusionsTitle: DANDELI_INCLUSIONS_TITLE,
+    inclusions: DANDELI_INCLUSIONS,
   },
   activities: [{ id: "included", title: "Activities Included:", icon: "Waves", items: [
     "River Kayaking", "River Boating", "River Zorbing", "River Swimming", "Nature Walk", "Archery",
@@ -25,9 +28,9 @@ export const MANTRA = {
   availabilityMessage: "Hi Destina Tours & Travels, I am interested in Mantra, Dandeli. Please share availability, pricing and booking details.",
   enquiryMessage: "Hi Destina Tours & Travels, I am interested in Mantra, Dandeli. Please share availability, pricing and booking details.",
   seoTitle: "Mantra Dandeli Resort | Destina Tours & Travels",
-  seoDescription: "Explore Mantra Dandeli with buffet meals, river activities, nature experiences, swimming pool, adventure activities and campfire. Enquire with Destina Tours & Travels.",
+  seoDescription: "Explore Mantra Dandeli's 1 Night / 2 Days package at ₹2,200 per person, with 2 Nights / 3 Days and 3 Nights / 4 Days also available. Buffet meals, river activities, nature experiences, swimming pool, adventure activities and campfire. Enquire with Destina Tours & Travels.",
   faqs: [
-    { q: "What is the listed Mantra tariff?", a: "The listed tariff is ₹2,200 / person. Contact Destina Tours & Travels for availability, pricing and booking details." },
+    { q: "What is the listed Mantra tariff?", a: "1 Night / 2 Days is ₹2,200 / person, 2 Nights / 3 Days is ₹4,000 / person and 3 Nights / 4 Days is ₹6,200 / person. Contact Destina Tours & Travels for availability, pricing and booking details." },
     { q: "Which meals are included?", a: "Buffet Lunch (Mix), Evening Tea/Coffee, Buffet Dinner (Mix) and Buffet Breakfast." },
     { q: "Which activities are included?", a: "River Kayaking, River Boating, River Zorbing, River Swimming, Nature Walk, Archery, Swimming Pool, Rain Dance, Badminton, Target Shooting, Night Campfire, Carom and Kids Play Area." },
     { q: "How do I check availability for Mantra?", a: "Message Destina Tours & Travels on WhatsApp with your travel dates and guest count for availability, pricing and booking details. An enquiry is not a confirmed booking." },

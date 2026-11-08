@@ -1,6 +1,7 @@
 import { IMAGES, RESORT } from "./config";
 import { FORTUNE_WOODS } from "./fortuneWoods";
 import { MANTRA } from "./mantra";
+import { DANDELI_DURATIONS, DANDELI_INCLUSIONS, DANDELI_INCLUSIONS_TITLE } from "./dandeliPricing";
 
 // Only supplied, available properties belong here. Menus, listings, packages and
 // detail routes read this catalogue; adding a resort never requires a redesign.
@@ -25,14 +26,16 @@ export const NATURE_MIST = {
   ],
   highlights: ["Stay", "Food", "River Activities", "Nature Trek", "Swimming Pool", "Campfire + Music"],
   package: {
-    duration: "1 Night / 1 Day",
+    duration: "1 Night / 2 Days",
+    durations: DANDELI_DURATIONS,
     price: 1500,
     unit: "person",
     category: "Group / Sharing Cottage",
     checkIn: "11:30 AM",
     checkOut: "10:30 AM",
     checkInISO: "11:30", checkOutISO: "10:30",
-    inclusions: ["Stay", "Food", "River Activities", "Nature Trek", "Indoor & Outdoor Games", "Campfire + Music"],
+    inclusionsTitle: DANDELI_INCLUSIONS_TITLE,
+    inclusions: DANDELI_INCLUSIONS,
   },
   activities: [
     { id: "water", title: "Free Water Activities", icon: "Waves", items: ["Boating", "Kayaking", "Zorbing"] },
@@ -41,12 +44,12 @@ export const NATURE_MIST = {
   ],
   sightseeing: ["Supa Dam", "Crocodile Park", "Moulangi Park", "Kali River View"],
   transportNote: "Sightseeing transport is not included and is available at additional cost.",
-  enquiryMessage: "Hi Destina Tours & Travels, I am interested in the Nature Mist Dandeli 1 Night / 1 Day package. Please share availability and booking details.",
+  enquiryMessage: "Hi Destina Tours & Travels, I am interested in the Nature Mist Dandeli 1 Night / 2 Days package. Please share availability and booking details.",
   availabilityMessage: "Hi Destina Tours & Travels, I would like to check availability for the Nature Mist Dandeli package. Please share availability, pricing and booking details.",
   seoTitle: "Nature Mist Dandeli Resort & Package | Destina Tours & Travels",
-  seoDescription: "Explore Nature Mist Dandeli's 1 Night / 1 Day package at ₹1,500 per person in a Group / Sharing Cottage. Enquire with Destina for availability and booking details.",
+  seoDescription: "Explore Nature Mist Dandeli's 1 Night / 2 Days package at ₹1,500 per person in a Group / Sharing Cottage, with 2 Nights / 3 Days and 3 Nights / 4 Days also available. Enquire with Destina for availability and booking details.",
   faqs: [
-    { q: "What is the Nature Mist package price?", a: "The 1 Night / 1 Day package is ₹1,500 / person for a Group / Sharing Cottage. This is a per-person package price, not a nightly room rate. Prices and availability are subject to confirmation." },
+    { q: "What is the Nature Mist package price?", a: "1 Night / 2 Days is ₹1,500 / person, 2 Nights / 3 Days is ₹2,600 / person and 3 Nights / 4 Days is ₹4,100 / person, for a Group / Sharing Cottage. These are per-person package prices, not nightly room rates. Prices and availability are subject to confirmation." },
     { q: "What are the check-in and check-out times?", a: "Check-in is 11:30 AM and check-out is 10:30 AM." },
     { q: "What does the package include?", a: "Stay, Food, River Activities, Nature Trek, Indoor & Outdoor Games, and Campfire + Music. Free water activities listed are Boating, Kayaking and Zorbing." },
     { q: "Is sightseeing transport included?", a: "Sightseeing transport is not included and is available at additional cost. Listed sightseeing places are Supa Dam, Crocodile Park, Moulangi Park and Kali River View." },

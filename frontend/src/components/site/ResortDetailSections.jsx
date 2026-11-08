@@ -1,11 +1,34 @@
+import { useState } from "react";
 import { Check, Waves, Target, Flame, MapPin, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { formatPrice } from "../../lib/destinations";
+import { durationPrice, packageEnquiryMessage } from "../../lib/dandeliPricing";
 import { FadeIn } from "./RevealText";
 import { WhatsAppButton } from "./Buttons";
 import { SectionHeading } from "./DestinationUI";
 
 const ICONS = { Waves, Target, Flame };
+
+const DurationSelector = ({ resort, durations, selectedKey, onSelect }) => (
+  <div className="mb-7 flex flex-wrap gap-2" data-testid={`${resort.id}-duration-selector`}>
+    {durations.map((d) => (
+      <button
+        key={d.key}
+        type="button"
+        aria-pressed={selectedKey === d.key}
+        onClick={() => onSelect(d.key)}
+        data-testid={`${resort.id}-duration-${d.key}`}
+        className={`rounded-full border px-4 py-2.5 text-[11px] uppercase tracking-[0.12em] transition-colors duration-300 ${
+          selectedKey === d.key
+            ? "border-[#8B5A2B] bg-[#8B5A2B] text-[#F7F5F0]"
+            : "border-[#0A170F]/20 text-[#0A170F] hover:border-[#8B5A2B] hover:text-[#8B5A2B]"
+        }`}
+      >
+        {d.label}
+      </button>
+    ))}
+  </div>
+);
 
 export const ResortPhotoGallery = ({ resort }) => (
   <section className="bg-[#0A170F] py-20 text-[#F7F5F0] md:py-28" data-testid={`${resort.id}-gallery`}>
@@ -24,24 +47,47 @@ export const ResortPhotoGallery = ({ resort }) => (
 
 export const ResortPackageDetails = ({ resort }) => {
   const pack = resort.package;
+  const hasDurations = Boolean(pack.durations?.length);
+  const [durationKey, setDurationKey] = useState(hasDurations ? pack.durations[0].key : null);
+  const selectedDuration = hasDurations ? pack.durations.find((d) => d.key === durationKey) || pack.durations[0] : null;
+  const currentPrice = hasDurations ? durationPrice(pack.price, durationKey) : pack.price;
+  const mainEnquiryMessage = hasDurations
+    ? packageEnquiryMessage(resort, { durationLabel: selectedDuration.label, price: currentPrice })
+    : resort.enquiryMessage;
+
   return <section id="package" className="bg-[#F7F5F0] py-20 md:py-28" data-testid={`${resort.id}-package-details`}>
     <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div className="grid gap-10 md:grid-cols-2">
         <div>
-          <SectionHeading eyebrow="02 / Your package" title={pack.title || `${pack.duration} Package`} testId={`${resort.id}-package-heading`} />
+          <SectionHeading eyebrow="02 / Your package" title={pack.title || `${selectedDuration ? selectedDuration.label : pack.duration} Package`} testId={`${resort.id}-package-heading`} />
+          {hasDurations && <DurationSelector resort={resort} durations={pack.durations} selectedKey={durationKey} onSelect={setDurationKey} />}
           {pack.tariffs ? <>
             <p className="text-sm font-semibold text-[#8B5A2B]" data-testid={`${resort.id}-tariff-unit`}>{pack.unitLabel}</p>
             {pack.tariffs.map((cottage) => <div key={cottage.id} className="mt-8 border-t border-[#0A170F]/15 pt-6" data-testid={`${resort.id}-tariff-${cottage.id}`}>
               <h3 className="font-serif text-2xl leading-tight" data-testid={`${resort.id}-cottage-${cottage.id}`}>{cottage.name}</h3>
               <dl className="mt-4 divide-y divide-[#0A170F]/10">
-                {cottage.rates.map((rate) => <div key={rate.sharing} className="grid grid-cols-2 items-center gap-4 py-4" data-testid={`${resort.id}-${cottage.id}-${rate.sharing}-sharing`}>
-                  <dt className="text-sm">{rate.sharing} Sharing{rate.note && <span className="mt-1 block text-xs text-[#0A170F]/65">({rate.note})</span>}</dt>
-                  <dd className="text-right font-serif text-2xl text-[#8B5A2B]">{formatPrice(rate.price)}<span className="block font-sans text-xs text-[#0A170F]/70">/person/night</span></dd>
-                </div>)}
+                {cottage.rates.map((rate) => {
+                  const ratePrice = hasDurations ? durationPrice(rate.price, durationKey) : rate.price;
+                  const sharingLabel = `${rate.sharing} Sharing`;
+                  return <div key={rate.sharing} className="flex flex-wrap items-center justify-between gap-3 py-4" data-testid={`${resort.id}-${cottage.id}-${rate.sharing}-sharing`}>
+                    <dt className="text-sm">{sharingLabel}{rate.note && <span className="mt-1 block text-xs text-[#0A170F]/65">({rate.note})</span>}</dt>
+                    <div className="ml-auto flex items-center gap-3">
+                      <dd className="text-right font-serif text-2xl text-[#8B5A2B]" data-testid={`${resort.id}-${cottage.id}-${rate.sharing}-sharing-price`}>{formatPrice(ratePrice)}<span className="block font-sans text-xs text-[#0A170F]/70">/person</span></dd>
+                      {hasDurations && <WhatsAppButton
+                        message={packageEnquiryMessage(resort, { durationLabel: selectedDuration.label, price: ratePrice, cottage: cottage.name, sharing: sharingLabel })}
+                        label="Enquire"
+                        variant="ghost"
+                        className="!px-4 !py-2 !text-[10px]"
+                        testId={`${resort.id}-${cottage.id}-${rate.sharing}-sharing-enquire`}
+                      />}
+                    </div>
+                  </div>;
+                })}
               </dl>
             </div>)}
           </> : <>
-          <p className="font-serif text-5xl text-[#8B5A2B]" data-testid={`${resort.id}-package-price`}>{formatPrice(pack.price)}<span className="font-sans text-base"> / {pack.unit}</span></p>
+          <p className="font-serif text-5xl text-[#8B5A2B]" data-testid={`${resort.id}-package-price`}>{formatPrice(currentPrice)}<span className="font-sans text-base"> / {pack.unit}</span></p>
+          {selectedDuration && <p className="mt-2 text-xs uppercase tracking-[0.18em] text-[#0A170F]/60" data-testid={`${resort.id}-selected-duration`}>Selected Package: {selectedDuration.label}</p>}
           {pack.category && <p className="mt-4 text-sm" data-testid={`${resort.id}-package-category`}>{pack.category}</p>}
           {pack.checkIn && pack.checkOut && <dl className="mt-8 flex flex-wrap gap-10 border-t border-[#0A170F]/15 pt-6">
             <div data-testid={`${resort.id}-check-in`}><dt className="text-xs text-[#0A170F]/60">Check-in</dt><dd className="mt-2 font-serif text-2xl">{pack.checkIn}</dd></div>
@@ -52,9 +98,9 @@ export const ResortPackageDetails = ({ resort }) => {
         <div className="md:pt-4">
           <h3 className="font-serif text-3xl" data-testid={`${resort.id}-inclusions-heading`}>{pack.inclusionsTitle || "Package includes"}</h3>
           <ul className="mt-7 grid gap-5 sm:grid-cols-2" data-testid={`${resort.id}-package-inclusions`}>{pack.inclusions.map((item, index) => <li key={item} className="flex items-center gap-3 border-b border-[#0A170F]/10 pb-4 text-sm" data-testid={`${resort.id}-package-inclusion-${index}`}><Check className="h-4 w-4 shrink-0 text-[#8B5A2B]" />{item}</li>)}</ul>
-          {pack.rateNote && <p className="mt-6 text-sm leading-relaxed text-[#0A170F]/75" data-testid={`${resort.id}-rate-note`}>{pack.rateNote} All tariffs are per person per night, not room prices.</p>}
+          {pack.rateNote && <p className="mt-6 text-sm leading-relaxed text-[#0A170F]/75" data-testid={`${resort.id}-rate-note`}>{pack.rateNote} All tariffs are per-person package prices, not room prices.</p>}
           <p className="mt-6 text-xs text-[#0A170F]/65" data-testid={`${resort.id}-package-price-note`}>Prices and availability are subject to confirmation.</p>
-          <div className="mt-7"><WhatsAppButton message={resort.enquiryMessage} label="Check Availability" testId={`${resort.id}-package-availability`} /></div>
+          <div className="mt-7"><WhatsAppButton message={mainEnquiryMessage} label="Check Availability" testId={`${resort.id}-package-availability`} /></div>
         </div>
       </div>
     </div>

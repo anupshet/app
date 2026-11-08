@@ -1,4 +1,6 @@
 // User-supplied Fortune Woods content and original uploaded photos only.
+import { DANDELI_DURATIONS, DANDELI_INCLUSIONS, DANDELI_INCLUSIONS_TITLE } from "./dandeliPricing";
+
 export const FORTUNE_WOODS = {
   id: "fortune-woods", destinationId: "dandeli", path: "/dandeli/fortune-woods",
   name: "Fortune Woods – Dandeli", navName: "Fortune Woods",
@@ -17,11 +19,13 @@ export const FORTUNE_WOODS = {
   package: {
     positioning: "Stay • Food • Adventure • Fun",
     title: "Cottage options & pricing",
-    price: 2500, unit: "person/night", unitLabel: "Per Person Per Night",
+    duration: "1 Night / 2 Days", durations: DANDELI_DURATIONS,
+    price: 2500, unit: "person", unitLabel: "Per Person",
     category: "AC River View Premium Cottage · 4 Sharing (with extra mattress)",
-    rateNote: "Shown starting price applies to 4 Sharing in the AC River View Premium Cottage, with extra mattress. Maharaja 4 Sharing remains ₹2,200/person/night.",
-    cardRateNote: "Maharaja 4 Sharing also available at ₹2,200/person/night.",
-    inclusions: ["Buffet Lunch", "Evening Tea / Coffee", "Buffet Dinner", "Buffet Breakfast"],
+    rateNote: "Shown starting price applies to 4 Sharing in the AC River View Premium Cottage, with extra mattress. Maharaja 4 Sharing remains ₹2,200/person.",
+    cardRateNote: "Maharaja 4 Sharing also available at ₹2,200/person.",
+    inclusionsTitle: DANDELI_INCLUSIONS_TITLE,
+    inclusions: DANDELI_INCLUSIONS,
     tariffs: [
       { id: "river-view", name: "AC River View Premium Cottage", rates: [
         { sharing: 2, price: 3000 },
@@ -42,11 +46,11 @@ export const FORTUNE_WOODS = {
   availabilityMessage: "Hi Destina Tours & Travels, I would like to check availability and pricing for Fortune Woods, Dandeli. Please share the available packages and booking details.",
   enquiryMessage: "Hi Destina Tours & Travels, I am interested in Fortune Woods, Dandeli. Please share availability, cottage options, pricing and booking details.",
   seoTitle: "Fortune Woods Dandeli | Resort & Packages | Destina Tours & Travels",
-  seoDescription: "Explore Fortune Woods Dandeli resort packages with AC cottages, river view stays, buffet meals and activities. Contact Destina for cottage options and availability.",
+  seoDescription: "Explore Fortune Woods Dandeli resort packages with AC cottages, river view stays, buffet meals and activities, available for 1 Night / 2 Days, 2 Nights / 3 Days and 3 Nights / 4 Days. Contact Destina for cottage options and availability.",
   faqs: [
-    { q: "Which option does the displayed starting price apply to?", a: "The displayed ₹2,500/person/night starting price is for 4 Sharing in the AC River View Premium Cottage, with extra mattress. The AC Maharaja Luxury Cottage 4 Sharing tariff remains ₹2,200/person/night. All listed tariffs are Per Person Per Night, not room prices." },
-    { q: "What are the AC River View Premium Cottage rates?", a: "Per Person Per Night: 2 Sharing — ₹3,000; 3 Sharing — ₹2,700; 4 Sharing with extra mattress — ₹2,500." },
-    { q: "What are the AC Maharaja Luxury Cottage rates?", a: "Per Person Per Night: 2 Sharing — ₹2,700; 3 Sharing — ₹2,500; 4 Sharing — ₹2,200." },
+    { q: "Which option does the displayed starting price apply to?", a: "The displayed ₹2,500/person starting price for the 1 Night / 2 Days package is for 4 Sharing in the AC River View Premium Cottage, with extra mattress. The AC Maharaja Luxury Cottage 4 Sharing tariff remains ₹2,200/person. All listed tariffs are Per Person package prices, not room prices." },
+    { q: "What are the AC River View Premium Cottage rates?", a: "Per Person for 1 Night / 2 Days: 2 Sharing — ₹3,000; 3 Sharing — ₹2,700; 4 Sharing with extra mattress — ₹2,500. 2 Nights / 3 Days and 3 Nights / 4 Days packages are also available at a revised total price." },
+    { q: "What are the AC Maharaja Luxury Cottage rates?", a: "Per Person for 1 Night / 2 Days: 2 Sharing — ₹2,700; 3 Sharing — ₹2,500; 4 Sharing — ₹2,200. 2 Nights / 3 Days and 3 Nights / 4 Days packages are also available at a revised total price." },
     { q: "Which meals are included?", a: "Buffet Lunch, Evening Tea / Coffee, Buffet Dinner and Buffet Breakfast." },
     { q: "Which activities are listed?", a: "Kayaking, Boating, Zorbing, River Swimming, Nature Walk, Archery, Swimming Pool Access, Badminton, Target Shooting, Night Campfire, Carrom & Indoor Games and Kids Play Area." },
     { q: "How do I check availability?", a: "Contact Destina Tours & Travels on WhatsApp with your dates and guest count for availability, cottage options, pricing and booking details. Destina is an independent booking assistance service, not the official resort website. Prices and availability are subject to confirmation." },

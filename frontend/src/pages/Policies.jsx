@@ -27,6 +27,31 @@ export function PrivacyPolicy() {
       <p>We use this information solely to check availability, share pricing and coordinate your booking with the resort. We do not sell or rent your information to third parties.</p>
       <h2>Data retention</h2>
       <p>We retain enquiry information for the duration required to complete your booking and for reasonable follow-up communication.</p>
+      <h2>Website Visitor Tracking and Live Chat – Zoho SalesIQ</h2>
+      <p>Our website uses Zoho SalesIQ, a live chat and visitor tracking service provided by Zoho Corporation, to help us communicate with visitors and improve customer support.</p>
+      <p>Zoho SalesIQ may collect certain technical information about website visitors, including:</p>
+      <p>
+        • IP address<br />
+        • Browser type and language<br />
+        • Operating system<br />
+        • Time zone<br />
+        • Referring URL<br />
+        • Pages and resources accessed<br />
+        • Website interaction information
+      </p>
+      <p>Zoho SalesIQ may use cookies and similar technologies to identify returning visitors and understand their interactions with our website.</p>
+      <p>When visitors voluntarily use the live chat feature, information such as their name, email address, phone number and chat messages may also be collected, depending on the information they provide.</p>
+      <p>We use this information to:</p>
+      <p>
+        • Understand website visitor activity.<br />
+        • Respond to resort and package enquiries.<br />
+        • Provide customer assistance.<br />
+        • Improve our website and services.<br />
+        • Communicate with visitors who initiate enquiries.
+      </p>
+      <p>Zoho processes this information through its SalesIQ service on our behalf. Information is handled according to Zoho's applicable privacy and security practices.</p>
+      <p>Visitors can manage or block cookies through their browser settings. Where applicable, visitors can also manage their cookie preferences through the website's cookie settings.</p>
+      <p>Additional information about Zoho's privacy practices and cookies is available through Zoho's <a href="https://www.zoho.com/privacy.html" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4" data-testid="privacy-zoho-privacy-link">Privacy Policy</a> and <a href="https://www.zoho.com/privacy/cookie-policy.html" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4" data-testid="privacy-zoho-cookie-link">Cookie Policy</a>.</p>
       <h2>Contact</h2>
       <p>For any privacy-related questions, please reach out to us on WhatsApp or email us at the address listed on the Contact page.</p>
     </PolicyLayout>
