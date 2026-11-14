@@ -52,7 +52,7 @@ export function WhatsAppButton({ message, className = "", label = "WhatsApp Enqu
   const id = useId().replace(/:/g, "");
   const context = useEnquiryContext();
   const msg = message || context.message;
-  const onClick = (e) => { e.preventDefault(); openWhatsApp(msg); };
+  const onClick = (e) => { e.preventDefault();trackGoogleAdsConversion("ClPvCJHXuLgdEMS9x61E"); openWhatsApp(msg); };
   const base = variant === "ghost"
     ? "border border-[#0A170F]/20 bg-transparent text-[#0A170F] hover:bg-[#0A170F] hover:text-[#F7F5F0]"
     : "bg-[#25D366] text-[#0A170F] hover:bg-[#1ebe58]";
@@ -69,6 +69,15 @@ export function WhatsAppButton({ message, className = "", label = "WhatsApp Enqu
   );
 }
 
+// Google Ads conversion tracking helper
+const trackGoogleAdsConversion = (conversionLabel) => {
+  if (typeof window.gtag === "function") {
+    window.gtag("event", "conversion", {
+      send_to: `AW-18349153988/${conversionLabel}`,
+    });
+  }
+};
+
 export function CallButton({ className = "", label = "Call Now", testId, variant = "ghost" }) {
   const id = useId().replace(/:/g, "");
   const base = variant === "primary"
@@ -77,7 +86,7 @@ export function CallButton({ className = "", label = "Call Now", testId, variant
   return (
     <a
       href={telLink()}
-      onClick={(event) => { event.preventDefault(); openCall(); }}
+      onClick={(event) => { event.preventDefault(); trackGoogleAdsConversion("HXsQCNySurgdEMS9x61E"); openCall(); }}
       data-testid={testId || `call-now-button-${id}`}
       className={`group inline-flex items-center gap-3 rounded-full px-7 py-4 text-sm uppercase tracking-[0.18em] transition-colors duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F7F5F0]/40 ${base} ${className}`}
     >

@@ -10,7 +10,7 @@ import CheckAvailability from "../components/site/CheckAvailability";
 import { useSEO } from "../hooks/useSEO";
 
 export default function Home() {
-  useSEO("Dandeli & Wayanad Resorts & Packages | Destina Tours & Travels", "Handpicked Dandeli and Wayanad stays with independent booking assistance. Explore Nature Mist packages from ₹1,500 per person and Land's End Resort with Destina.", { image: FORTUNE_WOODS.gallery[1].src });
+  useSEO("Dandeli Resort Bookings Onine | Dandeli Tour Packages", "Handpicked Dandeli stays with independent booking assistance. Explore Nature Mist packages from ₹1,500 per person. Book River Resorts in Dandeli Online", { image: FORTUNE_WOODS.gallery[1].src });
   return (
     <main data-testid="home-page">
       <DestinationHero testId="hero" home image={FORTUNE_WOODS.gallery[1]} eyebrow="Destina Tours & Travels · Dandeli, Karnataka" lines={["Discover Dandeli.", "Stay. Explore. Unwind."]} description="Handpicked Dandeli stays and complete resort packages with personalized booking assistance from Destina Tours & Travels.">
